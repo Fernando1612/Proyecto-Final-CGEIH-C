@@ -27,10 +27,9 @@
 *.lai
 *.la
 *.a
-*.lib
+
 
 # Executables
-*.exe
 *.out
 *.app
 
@@ -74,8 +73,6 @@ xcuserdata
 *.sdf
 *.opensdf
 *.suo
-*.pdb
-*.ilk
 *.aps
 ipch/
 
