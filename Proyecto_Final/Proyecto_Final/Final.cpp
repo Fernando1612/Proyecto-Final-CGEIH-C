@@ -283,6 +283,7 @@ int main()
 	Model casaVieja("resources/objects/casa/OldHouse.obj");
 	//Model cubo("resources/objects/cubo/cube02.obj");
 	Model casaDoll("resources/objects/casa/DollHouse.obj");
+	Model edificio("resources/objects/edificio/edificio.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
@@ -420,6 +421,10 @@ int main()
 		staticShader.setMat4("model", model);
 		casaVieja.Draw(staticShader);
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f));
+		model = glm::scale(model, glm::vec3(5.0f));
+		staticShader.setMat4("model", model);
+		edificio.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
