@@ -9,7 +9,7 @@
 /*------------- No. Cuenta: 419049300       ---------------*/
 /*------------- Alumno: Vaquero Barajas Alexis-------------*/
 /*------------- No. Cuenta:  316073934      ---------------*/
-//prueba david
+
 #include <Windows.h>
 
 #include <glad/glad.h>
