@@ -279,19 +279,22 @@ int main()
 	Model brazoDer("resources/objects/Personaje/brazoder.obj");
 	Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
 	Model cabeza("resources/objects/Personaje/cabeza.obj");
-	Model carro("resources/objects/lambo/carroceria.obj");
-	Model llanta("resources/objects/lambo/Wheel.obj");
+	Model carro("resources/objects/lambo/carroceria.obj");//en caso de ocuparlo tambien
+	Model llanta("resources/objects/lambo/Wheel.obj");//llantas del lambo
 	Model casaVieja("resources/objects/casa/OldHouse.obj");
 	//Model cubo("resources/objects/cubo/cube02.obj");
 	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
+	Model suzyky("resources/objects/1-Suzuky/swift.obj");//si tuvo mala textura y esta girado
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
 
 	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
 	//ninja.initShaders(animShader.ID);
+	ModelAnim shannon("resources/objects/Deportista/Running.dae");//cargando a SHANNON (deportista)
+	shannon.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -389,6 +392,12 @@ int main()
 		//animShader.setMat4("model", model);
 		//animacionPersonaje.Draw(animShader);
 
+		//dibujar a Shannon (deportista)
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(80.0f, 0.0f, 50.0f));//ubicar mi personaje //ponerle las variables como al carro para su mov
+		model = glm::scale(model, glm::vec3(0.3f));//escala
+		animShader.setMat4("model", model);
+		shannon.Draw(animShader);
+
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -442,8 +451,8 @@ int main()
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
-		carro.Draw(staticShader);
-
+		suzyky.Draw(staticShader);
+		/*
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
@@ -464,7 +473,7 @@ int main()
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, -14.5f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Izq trase
+		llanta.Draw(staticShader);	//Izq trase        */
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje
 		// -------------------------------------------------------------------------------------------------------------------------
