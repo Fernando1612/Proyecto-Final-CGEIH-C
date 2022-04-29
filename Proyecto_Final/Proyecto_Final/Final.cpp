@@ -73,6 +73,12 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
 		orienta = 0.0f;
+
+//para mov de deportista
+float movShan = 0.0f, //con esto se movera el deportista
+	IdaRegresoShan = 1.0f; //para que avance y regrese
+int estadoShan = 1.0f; // para que llegue a diferentes posiciones
+
 bool	animacion = false,
 		recorrido1 = true,
 		recorrido2 = false,
@@ -187,6 +193,90 @@ void animate(void)
 	{
 		movAuto_z += 3.0f;
 	}
+
+	//deportista: va a hacer Suicidios
+	switch (estadoShan){
+	case 1://lega a 50
+		if (IdaRegresoShan == 1)
+		{
+			movShan += 0.5f;//con esto el deportista sale hacia adelante
+			if (movShan >= 50) {
+				IdaRegresoShan = 0;//cambio de estado
+			}
+		}
+		else {
+			movShan -= 0.5f;//con esto el deportista sale hacia atras
+			if (movShan <= 0) {
+				IdaRegresoShan = 1;//cambio de estado
+				estadoShan = 2;//cambio de estado del case
+			}
+		}
+		break;
+	case 2://llega a 100
+		if (IdaRegresoShan == 1 && estadoShan == 2)
+		{
+			movShan += 0.5f;//con esto el deportista sale hacia adelante
+			if (movShan >= 100) {
+				IdaRegresoShan = 0;//cambio de estado
+			}
+		}
+		else {
+			movShan -= 0.5f;//con esto el deportista sale hacia atras
+			if (movShan <= 0) {
+				IdaRegresoShan = 1;//cambio de estado
+				estadoShan = 3;//cambio de estado del case
+			}
+		}
+		break;
+	case 3://llega a 150
+		if (IdaRegresoShan == 1)
+		{
+			movShan += 0.5f;//con esto el deportista sale hacia adelante
+			if (movShan >= 150) {
+				IdaRegresoShan = 0;//cambio de estado
+			}
+		}
+		else {
+			movShan -= 0.5f;//con esto el deportista sale hacia atras
+			if (movShan <= 0) {
+				IdaRegresoShan = 1;//cambio de estado
+				estadoShan = 4;//cambio de estado del case
+			}
+		}
+		break;
+	case 4://llega a 200
+		if (IdaRegresoShan == 1)
+		{
+			movShan += 0.5f;//con esto el deportista sale hacia adelante
+			if (movShan >= 200) {
+				IdaRegresoShan = 0;//cambio de estado
+			}
+		}
+		else {
+			movShan -= 0.5f;//con esto el deportista sale hacia atras
+			if (movShan <= 0) {
+				IdaRegresoShan = 1;//cambio de estado
+				estadoShan = 1;//cambio de estado del case (regreso)
+			}
+		}
+		break;
+	default:
+		break;
+	}
+
+	/*if (IdaRegresoShan == 1)// solo es ida y regreso
+	{
+		movShan += 0.5f;//con esto el deportista sale hacia adelante
+		if (movShan >= 200) {
+			IdaRegresoShan = 0;//cambio de estado
+		}
+	}
+	else {
+		movShan -= 0.5f;//con esto el deportista sale hacia atras
+		if (movShan <= 0) {
+			IdaRegresoShan = 1;//cambio de estado
+		}
+	}*/
 }
 
 void getResolution()
@@ -393,8 +483,8 @@ int main()
 		//animacionPersonaje.Draw(animShader);
 
 		//dibujar a Shannon (deportista)
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(80.0f, 0.0f, 50.0f));//ubicar mi personaje //ponerle las variables como al carro para su mov
-		model = glm::scale(model, glm::vec3(0.3f));//escala
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(80.0f, 0.0f, movShan));//ubicar mi personaje //la var de mov debe colocarse bien
+		model = glm::scale(model, glm::vec3(0.1f));//escala
 		animShader.setMat4("model", model);
 		shannon.Draw(animShader);
 
@@ -435,13 +525,13 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
 		staticShader.setMat4("model", model);
-		edificio.Draw(staticShader);
+		//edificio.Draw(staticShader);
 
 		// OXXO
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-70.0f, 0.0f, 70.0f));
 		model = glm::scale(model, glm::vec3(4.0f));
 		staticShader.setMat4("model", model);
-		oxxo.Draw(staticShader);
+		//oxxo.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
