@@ -376,7 +376,9 @@ int main()
 	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
-	Model suzyky("resources/objects/1-Suzuky/swift.obj");//si tuvo mala textura y esta girado
+	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
+	Model suzyky("resources/objects/1-Suzuky/swift.obj");//si tuvo mala textura 
+
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
@@ -532,6 +534,12 @@ int main()
 		model = glm::scale(model, glm::vec3(4.0f));
 		staticShader.setMat4("model", model);
 		//oxxo.Draw(staticShader);
+
+		// ENTRADA
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, 70.0f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		staticShader.setMat4("model", model);
+		entrada.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
