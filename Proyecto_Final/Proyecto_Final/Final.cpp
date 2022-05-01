@@ -376,8 +376,8 @@ int main()
 	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
-	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
-	Model suzyky("resources/objects/1-Suzuky/swift.obj");//si tuvo mala textura 
+	//Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
+	Model Carro("resources/objects/2-carro/Carro.obj");//si tuvo mala textura 
 
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -535,11 +535,11 @@ int main()
 		staticShader.setMat4("model", model);
 		//oxxo.Draw(staticShader);
 
-		// ENTRADA
+		/*// ENTRADA
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, 70.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
 		staticShader.setMat4("model", model);
-		entrada.Draw(staticShader);
+		entrada.Draw(staticShader);*/
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
@@ -547,9 +547,9 @@ int main()
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, -1.0f, movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::scale(model, glm::vec3(1.1f, 1.1f, 1.1f));
 		staticShader.setMat4("model", model);
-		suzyky.Draw(staticShader);
+		Carro.Draw(staticShader);
 		/*
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
