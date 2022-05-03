@@ -77,7 +77,8 @@ float	movAuto_x = 0.0f,
 //para mov de deportista
 float movShan = 0.0f, //con esto se movera el deportista
 	IdaRegresoShan = 1.0f; //para que avance y regrese
-int estadoShan = 1.0f; // para que llegue a diferentes posiciones
+	int estadoShan = 1.0f,
+	orienShan = 0.0f; // para que llegue a diferentes posiciones
 
 bool	animacion = false,
 		recorrido1 = true,
@@ -376,8 +377,8 @@ int main()
 	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
-	//Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
-	Model Carro("resources/objects/2-carro/Carro.obj");//si tuvo mala textura 
+	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
+	Model Carro("resources/objects/Bocho/Bocho.obj");//si tuvo mala textura 
 
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -385,6 +386,7 @@ int main()
 
 	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
 	//ninja.initShaders(animShader.ID);
+
 	ModelAnim shannon("resources/objects/Deportista/Running.dae");//cargando a SHANNON (deportista)
 	shannon.initShaders(animShader.ID);
 
@@ -486,6 +488,7 @@ int main()
 
 		//dibujar a Shannon (deportista)
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(80.0f, 0.0f, movShan));//ubicar mi personaje //la var de mov debe colocarse bien
+		//model = glm::rotate(model, glm::radians(orienShan), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f));//escala
 		animShader.setMat4("model", model);
 		shannon.Draw(animShader);
@@ -535,11 +538,11 @@ int main()
 		staticShader.setMat4("model", model);
 		//oxxo.Draw(staticShader);
 
-		/*// ENTRADA
+		// ENTRADA
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, 70.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
 		staticShader.setMat4("model", model);
-		entrada.Draw(staticShader);*/
+		entrada.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
@@ -547,10 +550,10 @@ int main()
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, -1.0f, movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.1f, 1.1f, 1.1f));
+		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
 		Carro.Draw(staticShader);
-		/*
+		
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
