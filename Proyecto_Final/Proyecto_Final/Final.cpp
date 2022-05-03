@@ -370,15 +370,16 @@ int main()
 	Model brazoDer("resources/objects/Personaje/brazoder.obj");
 	Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
 	Model cabeza("resources/objects/Personaje/cabeza.obj");
-	Model carro("resources/objects/lambo/carroceria.obj");//en caso de ocuparlo tambien
-	Model llanta("resources/objects/lambo/Wheel.obj");//llantas del lambo
+	//Model carro("resources/objects/lambo/carroceria.obj");//en caso de ocuparlo tambien
+	//Model llanta("resources/objects/lambo/Wheel.obj");//llantas del lambo
 	Model casaVieja("resources/objects/casa/OldHouse.obj");
 	//Model cubo("resources/objects/cubo/cube02.obj");
 	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
 	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
-	Model Carro("resources/objects/Bocho/Bocho.obj");//si tuvo mala textura 
+	Model Carro("resources/objects/Bocho/Bocho.obj");
+	Model rueda("resources/objects/Bocho/Rueda.obj");
 
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -548,13 +549,13 @@ int main()
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, -1.0f, movAuto_z));
+		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, 1.0f, movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
 		Carro.Draw(staticShader);
 		
-		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
+		/*model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Izq delantera
