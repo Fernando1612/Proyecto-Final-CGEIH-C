@@ -387,7 +387,7 @@ int main()
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
 	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
 	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
-	Model rueda("resources/objects/Bocho/Rueda.obj");//ruedas //no corren
+	Model rueda("resources/objects/Bocho/Rueda.obj");//ruedas 
 
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -557,31 +557,31 @@ int main()
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, 1.0f, movAuto_z));
+		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, 4.5f, movAuto_z));// ya está con respecto a Y
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
 		Carro.Draw(staticShader);
 		
-		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
+		model = glm::translate(tmp, glm::vec3(13.0f, 2.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader);	//Izq delantera
 
-		model = glm::translate(tmp, glm::vec3(-8.5f, 2.5f, 12.9f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(tmp, glm::vec3(-13.0f, 2.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader);	//Der delantera
 
-		model = glm::translate(tmp, glm::vec3(-8.5f, 2.5f, -14.5f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(tmp, glm::vec3(-13.0f, 2.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader);	//Der trasera
 
-		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, -14.5f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
+		model = glm::translate(tmp, glm::vec3(13.0f, 2.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader);	//Izq trase      
 		// -------------------------------------------------------------------------------------------------------------------------
