@@ -387,7 +387,7 @@ int main()
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
 	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
 	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
-	//Model rueda("resources/objects/Bocho/Rueda.obj");//ruedas //no corren
+	Model rueda("resources/objects/Bocho/Rueda.obj");//ruedas //no corren
 
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -562,7 +562,7 @@ int main()
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
 		Carro.Draw(staticShader);
-		/*
+		
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
@@ -583,7 +583,7 @@ int main()
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, -14.5f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
-		rueda.Draw(staticShader);	//Izq trase   */     
+		rueda.Draw(staticShader);	//Izq trase      
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje
 		// -------------------------------------------------------------------------------------------------------------------------
