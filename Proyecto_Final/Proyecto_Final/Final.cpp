@@ -78,6 +78,8 @@ bool	animacion = false,
 		recorrido3 = false,
 		recorrido4 = false;
 
+float movBici_z = 0.0f,
+	  movBici_x = 0.0f;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -90,6 +92,8 @@ float	incX = 0.0f,
 		incZ = 0.0f,
 		rotInc = 0.0f,
 		giroMonitoInc = 0.0f;
+
+float giroPedales = 0.0f;
 
 #define MAX_FRAMES 9
 int i_max_steps = 60;
@@ -148,6 +152,9 @@ void interpolation(void)
 
 void animate(void)
 {
+	giroPedales += 5.5f;
+	movBici_z += 0.1f;
+
 	if (play)
 	{
 		if (i_curr_steps >= i_max_steps) //end of animation between frames?
@@ -285,12 +292,20 @@ int main()
 	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
+	Model triciclo("resources/objects/triciclo/triciclo.obj");
+
+	Model pedales("resources/objects/bicicleta/pedales.obj");
+	Model cuadro("resources/objects/bicicleta/cuadro.obj");
+	Model rueda("resources/objects/bicicleta/rueda.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
 
 	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
 	//ninja.initShaders(animShader.ID);
+
+	ModelAnim man("resources/objects/bicicleta/man.dae");
+	man.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -378,7 +393,7 @@ int main()
 		animShader.setFloat("material.shininess", 32.0f);
 		animShader.setVec3("light.ambient", ambientColor);
 		animShader.setVec3("light.diffuse", diffuseColor);
-		animShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+		animShader.setVec3("light.specular", 0.0f, 0.0f, 0.0f);
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
@@ -397,6 +412,11 @@ int main()
 		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		//animShader.setMat4("model", model);
 		//ninja.Draw(animShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, movBici_z));
+		model = glm::scale(model, glm::vec3(0.2f));
+		animShader.setMat4("model", model);
+		man.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -432,6 +452,41 @@ int main()
 		model = glm::scale(model, glm::vec3(4.0f));
 		staticShader.setMat4("model", model);
 		oxxo.Draw(staticShader);
+
+
+
+		// -------------------------------------------------------------------------------------------------------------------------
+		// Persona en bici
+		// -------------------------------------------------------------------------------------------------------------------------
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, movBici_z));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		cuadro.Draw(staticShader);
+		
+		model = glm::translate(tmp, glm::vec3(0.0f,6.0f, 1.0f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		pedales.Draw(staticShader);
+
+		model = glm::translate(tmp, glm::vec3(-0.5f, 6.5f, 13.25f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		rueda.Draw(staticShader); // Adelante
+
+		model = glm::translate(tmp, glm::vec3(-0.5f, 6.5f, -7.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		rueda.Draw(staticShader); // Atras
+		
+
+		// Triciclo
+		//model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, -70.0f));
+		//model = glm::scale(model, glm::vec3(0.5f));
+		//staticShader.setMat4("model", model);
+		//triciclo.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
