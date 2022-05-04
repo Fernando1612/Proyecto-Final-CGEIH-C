@@ -77,8 +77,8 @@ float	movAuto_x = 0.0f,
 //para mov de deportista
 float movShan = 0.0f, //con esto se movera el deportista
 	IdaRegresoShan = 1.0f; //para que avance y regrese
-	int estadoShan = 1.0f,
-	orienShan = 0.0f; // para que llegue a diferentes posiciones
+int estadoShan = 1.0f;
+float orienShan = 0.0f; // para que llegue a diferentes posiciones
 
 bool	animacion = false,
 		recorrido1 = true,
@@ -203,11 +203,13 @@ void animate(void)
 			movShan += 0.5f;//con esto el deportista sale hacia adelante
 			if (movShan >= 50) {
 				IdaRegresoShan = 0;//cambio de estado
+				orienShan = 180.0f;//giro para el regreso
 			}
 		}
 		else {
 			movShan -= 0.5f;//con esto el deportista sale hacia atras
 			if (movShan <= 0) {
+				orienShan = 0.0f;//giro hacia enfrente
 				IdaRegresoShan = 1;//cambio de estado
 				estadoShan = 2;//cambio de estado del case
 			}
@@ -219,11 +221,13 @@ void animate(void)
 			movShan += 0.5f;//con esto el deportista sale hacia adelante
 			if (movShan >= 100) {
 				IdaRegresoShan = 0;//cambio de estado
+				orienShan = 180.0f;//giro para el regreso
 			}
 		}
 		else {
 			movShan -= 0.5f;//con esto el deportista sale hacia atras
 			if (movShan <= 0) {
+				orienShan = 0.0f;//giro hacia enfrente
 				IdaRegresoShan = 1;//cambio de estado
 				estadoShan = 3;//cambio de estado del case
 			}
@@ -235,11 +239,13 @@ void animate(void)
 			movShan += 0.5f;//con esto el deportista sale hacia adelante
 			if (movShan >= 150) {
 				IdaRegresoShan = 0;//cambio de estado
+				orienShan = 180.0f;//giro para el regreso
 			}
 		}
 		else {
 			movShan -= 0.5f;//con esto el deportista sale hacia atras
 			if (movShan <= 0) {
+				orienShan = 0.0f;//giro hacia enfrente
 				IdaRegresoShan = 1;//cambio de estado
 				estadoShan = 4;//cambio de estado del case
 			}
@@ -251,11 +257,13 @@ void animate(void)
 			movShan += 0.5f;//con esto el deportista sale hacia adelante
 			if (movShan >= 200) {
 				IdaRegresoShan = 0;//cambio de estado
+				orienShan = 180.0f;//giro para el regreso
 			}
 		}
 		else {
 			movShan -= 0.5f;//con esto el deportista sale hacia atras
 			if (movShan <= 0) {
+				orienShan = 0.0f;//giro hacia enfrente
 				IdaRegresoShan = 1;//cambio de estado
 				estadoShan = 1;//cambio de estado del case (regreso)
 			}
@@ -489,7 +497,7 @@ int main()
 
 		//dibujar a Shannon (deportista)
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(80.0f, 0.0f, movShan));//ubicar mi personaje //la var de mov debe colocarse bien
-		//model = glm::rotate(model, glm::radians(orienShan), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(orienShan), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f));//escala
 		animShader.setMat4("model", model);
 		shannon.Draw(animShader);
