@@ -81,6 +81,8 @@ bool	animacion = false,
 float movBici_z = 0.0f,
 	  movBici_x = 0.0f;
 
+float movTrici_z = 170.0f;
+
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
 		posY = 0.0f,
@@ -154,6 +156,7 @@ void animate(void)
 {
 	giroPedales += 5.5f;
 	movBici_z += 0.1f;
+	movTrici_z += 0.1f;
 
 	if (play)
 	{
@@ -292,11 +295,15 @@ int main()
 	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
-	Model triciclo("resources/objects/triciclo/triciclo.obj");
+	
 
 	Model pedales("resources/objects/bicicleta/pedales.obj");
 	Model cuadro("resources/objects/bicicleta/cuadro.obj");
 	Model rueda("resources/objects/bicicleta/rueda.obj");
+
+	Model pedalesTriciclo("resources/objects/triciclo/pedalesTriciclo.obj");
+	Model triciclo("resources/objects/triciclo/triciclo2F.obj");
+	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
@@ -304,8 +311,12 @@ int main()
 	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
 	//ninja.initShaders(animShader.ID);
 
-	ModelAnim man("resources/objects/bicicleta/man.dae");
-	man.initShaders(animShader.ID);
+	ModelAnim manBici("resources/objects/bicicleta/man.dae");
+	manBici.initShaders(animShader.ID);
+	
+
+	ModelAnim manTricycle("resources/objects/triciclo/manTricycle.dae");
+	manTricycle.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -377,8 +388,8 @@ int main()
 
 		//// Light
 		glm::vec3 lightColor = glm::vec3(0.6f);
-		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
+		glm::vec3 diffuseColor = lightColor * glm::vec3(1.0f);
+		glm::vec3 ambientColor = diffuseColor * glm::vec3(1.0f);
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -413,10 +424,19 @@ int main()
 		//animShader.setMat4("model", model);
 		//ninja.Draw(animShader);
 
+		//-------------------Triciclo---------------------------------
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, movTrici_z));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2));
+		animShader.setMat4("model", model);
+		manTricycle.Draw(animShader);
+
+		//-------------------Bicicleta--------------------------------
+		//
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, movBici_z));
 		model = glm::scale(model, glm::vec3(0.2f));
 		animShader.setMat4("model", model);
-		man.Draw(animShader);
+		manBici.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -453,7 +473,39 @@ int main()
 		staticShader.setMat4("model", model);
 		oxxo.Draw(staticShader);
 
+		// -------------------------------------------------------------------------------------------------------------------------
+		// Persona en Triciclo
+		// -------------------------------------------------------------------------------------------------------------------------
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, movTrici_z));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		triciclo.Draw(staticShader);
+		
+		model = glm::translate(tmp, glm::vec3(0.0f, 7.2f, -6.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		pedalesTriciclo.Draw(staticShader);
 
+		model = glm::translate(tmp, glm::vec3(-0.95f, 8.2f, -18.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		ruedaTriciclo.Draw(staticShader); // rueda trasera
+
+		model = glm::translate(tmp, glm::vec3(-11.5f, 8.2f, 17.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		ruedaTriciclo.Draw(staticShader); // rueda delantera der
+
+		model = glm::translate(tmp, glm::vec3(11.0f, 8.2f, 17.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		ruedaTriciclo.Draw(staticShader); // rueda delantera izq
+		
+		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en bici
@@ -481,12 +533,6 @@ int main()
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader); // Atras
 		
-
-		// Triciclo
-		//model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, -70.0f));
-		//model = glm::scale(model, glm::vec3(0.5f));
-		//staticShader.setMat4("model", model);
-		//triciclo.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
