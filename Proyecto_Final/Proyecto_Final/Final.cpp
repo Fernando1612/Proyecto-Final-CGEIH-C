@@ -52,7 +52,7 @@ GLFWmonitor *monitors;
 void getResolution(void);
 
 // camera
-Camera camera(glm::vec3(0.0f, 10.0f, 90.0f));
+Camera camera(glm::vec3(0.0f, 50.0f, 200.0f));
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -73,7 +73,7 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 //float y = 0.0f;
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
-		dog_mov = 0.0f,
+		movPersonaZ = 0.0f,
 		orienta = 0.0f;
 bool	animacion = false,
 		recorrido1 = true,
@@ -184,7 +184,7 @@ void animate(void)
 		}
 	}
 
-	dog_mov += 0.1f;
+	movPersonaZ += 0.1f;
 
 	//Vehículo
 	if (animacion)
@@ -397,19 +397,19 @@ int main()
 		animShader.setVec3("viewPos", camera.Position);
 
 		// DOG
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(400.0f, 0.0f, dog_mov)); 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(310.0f, 0.0f, movPersonaZ)); 
 		model = glm::scale(model, glm::vec3(0.3f));	
 		animShader.setMat4("model", model);
 		dog.Draw(animShader);
 
 		// Persona Paseando
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, 0.0f, dog_mov));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, 0.0f, movPersonaZ));
 		model = glm::scale(model, glm::vec3(0.1f));
 		animShader.setMat4("model", model);
 		womanWalk.Draw(animShader);
 
 		// Persona Caminando
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -40.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(8.0f, 0.0f, -40.0f));
 		model = glm::scale(model, glm::vec3(0.1f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
