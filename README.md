@@ -23,3 +23,16 @@
     - 2.5 GB RAM mínimo, 8 GB recomendado
     - 20 GB en disco, recomendado
     - Chip gráfico de mínimo 720p de resolución
+
+### Apertura y ejecución del proyecto
+
+Descargar el proyecto desde GitHub dando click al boton verde "Code" y seleccionando una de las opciones
+<div align="Center">
+    <img src="img/Captura1.JPG" alt="Descarga GitHub 1" ></img>
+<div align="justify">
+ 
+Si selecciona "Open with GitHub Desktop" requiere tener esta aplicación instalada en su equipo y seguir los pasos para clonar el repositorio de manera local, una vez 
+clonado saltar hasta "Ejecución el archivo .exe".
+
+La selección "Download ZIP" descargará un archivo .zip del proyecto, habrá que descomprimirlo en su equipo, regresar a este manual y saltarse hasta "Ejecución el
+archivo .exe".
