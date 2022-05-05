@@ -70,9 +70,12 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
+//para el movimiento del automovil
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
-		orienta = 0.0f;
+		orienta = 90.0f,
+		girollantas = 0.0f,
+		estadoAuto = 1.0f;
 
 //para mov de deportista
 float movShan = 0.0f, //con esto se movera el deportista
@@ -189,10 +192,52 @@ void animate(void)
 		}
 	}
 
-	//Vehículo
+	//Vehículo (se estaciona)
 	if (animacion)
 	{
-		movAuto_z += 3.0f;
+		if (estadoAuto == 1) {
+			movAuto_x += 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_x >= 200) {
+				orienta = 0.0f;
+				estadoAuto = 2.0f;
+				//animacion = FALSE;//no debe pararse
+			}
+		}
+		if (estadoAuto == 2) {
+			movAuto_z += 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_z >= 300) {
+				orienta = 90.0f;
+				estadoAuto = 3.0f;
+				//animacion = FALSE;//no debe pararse
+			}
+		}
+		if (estadoAuto == 3) {
+			movAuto_x += 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_x >= 500) {
+				orienta = 0.0f;
+				estadoAuto = 4.0f;
+				//animacion = FALSE;//no debe pararse
+			}
+		}
+		if (estadoAuto == 4) {
+			movAuto_z += 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_z >= 500) {
+				orienta = -90.0f;
+				estadoAuto = 5.0f;
+				//animacion = FALSE;//no debe pararse
+			}
+		}
+		if (estadoAuto == 5) {
+			movAuto_x -= 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_x <= 450) {
+				animacion = FALSE;
+			}
+		}
 	}
 
 	//deportista: va a hacer Suicidios
@@ -272,20 +317,6 @@ void animate(void)
 	default:
 		break;
 	}
-
-	/*if (IdaRegresoShan == 1)// solo es ida y regreso
-	{
-		movShan += 0.5f;//con esto el deportista sale hacia adelante
-		if (movShan >= 200) {
-			IdaRegresoShan = 0;//cambio de estado
-		}
-	}
-	else {
-		movShan -= 0.5f;//con esto el deportista sale hacia atras
-		if (movShan <= 0) {
-			IdaRegresoShan = 1;//cambio de estado
-		}
-	}*/
 }
 
 void getResolution()
@@ -548,7 +579,7 @@ int main()
 		//oxxo.Draw(staticShader);
 
 		// ENTRADA
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, 70.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 400.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
 		staticShader.setMat4("model", model);
 		entrada.Draw(staticShader);
@@ -557,29 +588,33 @@ int main()
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, 4.5f, movAuto_z));// ya está con respecto a Y
+		model = glm::translate(model, glm::vec3(-450.0f + movAuto_x, 4.5f, -100.0f + movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
 		Carro.Draw(staticShader);
 		
 		model = glm::translate(tmp, glm::vec3(13.0f, 2.0f, 30.0f));
+		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));//giro de las llantas
 		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader);	//Izq delantera
 
 		model = glm::translate(tmp, glm::vec3(-13.0f, 2.0f, 30.0f));
+		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader);	//Der delantera
 
 		model = glm::translate(tmp, glm::vec3(-13.0f, 2.0f, -20.0f));
+		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader);	//Der trasera
 
 		model = glm::translate(tmp, glm::vec3(13.0f, 2.0f, -20.0f));
+		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
