@@ -298,9 +298,13 @@ int main()
 	ModelAnim dog("resources/objects/Dog/doggo.dae");
 	dog.initShaders(animShader.ID);
 
-	// Persona Caminando
+	// Persona Paseando
 	ModelAnim womanWalk("resources/objects/PersonaCaminando/woman.dae");
 	womanWalk.initShaders(animShader.ID);
+
+	// Persona Caminando
+	ModelAnim manWalk("resources/objects/PersonaCaminando2/man.dae");
+	manWalk.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -394,15 +398,22 @@ int main()
 
 		// DOG
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(400.0f, 0.0f, dog_mov)); 
-		model = glm::scale(model, glm::vec3(0.5f));	
+		model = glm::scale(model, glm::vec3(0.3f));	
 		animShader.setMat4("model", model);
 		dog.Draw(animShader);
 
-		// Persona Caminando
+		// Persona Paseando
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, 0.0f, dog_mov));
-		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::scale(model, glm::vec3(0.1f));
 		animShader.setMat4("model", model);
 		womanWalk.Draw(animShader);
+
+		// Persona Caminando
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(0.1f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		animShader.setMat4("model", model);
+		manWalk.Draw(animShader);
 		
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
