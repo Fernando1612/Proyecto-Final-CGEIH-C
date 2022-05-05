@@ -73,6 +73,7 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 //float y = 0.0f;
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
+		dog_mov = 0.0f,
 		orienta = 0.0f;
 bool	animacion = false,
 		recorrido1 = true,
@@ -183,10 +184,13 @@ void animate(void)
 		}
 	}
 
+	dog_mov += 0.1f;
+
 	//Vehículo
 	if (animacion)
 	{
 		movAuto_z += 3.0f;
+		
 	}
 }
 
@@ -283,11 +287,13 @@ int main()
 	Model carro("resources/objects/lambo/carroceria.obj");
 	Model llanta("resources/objects/lambo/Wheel.obj");
 	Model casaVieja("resources/objects/casa/OldHouse.obj");
-	//Model cubo("resources/objects/cubo/cube02.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
+	// Modelos dinamicos
+	ModelAnim dog("resources/objects/Dog/doggo.dae");
+	dog.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -359,8 +365,8 @@ int main()
 
 		//// Light
 		glm::vec3 lightColor = glm::vec3(0.6f);
-		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
+		glm::vec3 diffuseColor = lightColor * glm::vec3(1.0f);
+		glm::vec3 ambientColor = diffuseColor * glm::vec3(1.0f);
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -375,15 +381,14 @@ int main()
 		animShader.setFloat("material.shininess", 32.0f);
 		animShader.setVec3("light.ambient", ambientColor);
 		animShader.setVec3("light.diffuse", diffuseColor);
-		animShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+		animShader.setVec3("light.specular", 0.0f, 0.0f, 0.0f);
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
-		//model = glm::translate(glm::mat4(1.0f), glm::vec3(-40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		//model = glm::scale(model, glm::vec3(1.2f));	// it's a bit too big for our scene, so scale it down
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		//animShader.setMat4("model", model);
-		//animacionPersonaje.Draw(animShader);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(400.0f, 0.0f, dog_mov)); 
+		model = glm::scale(model, glm::vec3(0.4f));	
+		animShader.setMat4("model", model);
+		dog.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
