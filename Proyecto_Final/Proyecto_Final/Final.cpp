@@ -292,8 +292,15 @@ int main()
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
 	// Modelos dinamicos
+	//------------------
+	
+	// Dog
 	ModelAnim dog("resources/objects/Dog/doggo.dae");
 	dog.initShaders(animShader.ID);
+
+	// Persona Caminando
+	ModelAnim womanWalk("resources/objects/PersonaCaminando/woman.dae");
+	womanWalk.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -370,7 +377,7 @@ int main()
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje Animacion
+		// Animaciones
 		// -------------------------------------------------------------------------------------------------------------------------
 		//Remember to activate the shader with the animation
 		animShader.use();
@@ -385,21 +392,18 @@ int main()
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
+		// DOG
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(400.0f, 0.0f, dog_mov)); 
-		model = glm::scale(model, glm::vec3(0.4f));	
+		model = glm::scale(model, glm::vec3(0.5f));	
 		animShader.setMat4("model", model);
 		dog.Draw(animShader);
 
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Segundo Personaje Animacion
-		// -------------------------------------------------------------------------------------------------------------------------
-
-		//model = glm::translate(glm::mat4(1.0f), glm::vec3(40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		//model = glm::scale(model, glm::vec3(0.5f));	// it's a bit too big for our scene, so scale it down
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		//animShader.setMat4("model", model);
-		//ninja.Draw(animShader);
-
+		// Persona Caminando
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, 0.0f, dog_mov));
+		model = glm::scale(model, glm::vec3(0.2f));
+		animShader.setMat4("model", model);
+		womanWalk.Draw(animShader);
+		
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
