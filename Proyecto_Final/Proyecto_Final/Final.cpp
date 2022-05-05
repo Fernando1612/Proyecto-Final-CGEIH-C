@@ -284,15 +284,10 @@ int main()
 	Model llanta("resources/objects/lambo/Wheel.obj");
 	Model casaVieja("resources/objects/casa/OldHouse.obj");
 	//Model cubo("resources/objects/cubo/cube02.obj");
-	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
+	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
-	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
-	//animacionPersonaje.initShaders(animShader.ID);
-
-	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
-	//ninja.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -407,11 +402,6 @@ int main()
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, 0.0f, -10.0f));
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		casaDoll.Draw(staticShader);
-
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2));
@@ -434,6 +424,13 @@ int main()
 		model = glm::scale(model, glm::vec3(4.0f));
 		staticShader.setMat4("model", model);
 		oxxo.Draw(staticShader);
+
+		// Cancha
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, -105.0f));
+		model = glm::scale(model, glm::vec3(9.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		courtBasket.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
