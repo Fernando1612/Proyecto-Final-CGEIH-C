@@ -215,7 +215,7 @@ void getResolution()
 
 void music() {
 	if (sound) {
-		bool played = PlaySound(L"SaltyDitty.wav", NULL, SND_LOOP | SND_ASYNC);
+		bool played = PlaySound(L"TamalesOaxaquenos.wav", NULL, SND_LOOP | SND_ASYNC);
 		sound = false;
 	}
 }
