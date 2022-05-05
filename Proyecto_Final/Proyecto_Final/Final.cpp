@@ -33,7 +33,11 @@
 #include <Skybox.h>
 #include <iostream>
 
-//#pragma comment(lib, "winmm.lib")
+#include <mmsystem.h>
+
+// Pragma para musica
+#pragma comment(lib, "winmm.lib")
+bool sound = true;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -77,6 +81,8 @@ bool	animacion = false,
 		recorrido2 = false,
 		recorrido3 = false,
 		recorrido4 = false;
+
+
 
 float movBici_z = 0.0f,
 	  movBici_x = 0.0f;
@@ -152,6 +158,7 @@ void interpolation(void)
 
 }
 
+
 void animate(void)
 {
 	giroPedales += 5.5f;
@@ -206,6 +213,12 @@ void getResolution()
 	SCR_HEIGHT = (mode->height) - 80;
 }
 
+void music() {
+	if (sound) {
+		bool played = PlaySound(L"SaltyDitty.wav", NULL, SND_LOOP | SND_ASYNC);
+		sound = false;
+	}
+}
 
 int main()
 {
@@ -692,6 +705,11 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		lightPosition.x++;
 	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
 		lightPosition.x--;
+
+	//Musica
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+		music();
+	}
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
