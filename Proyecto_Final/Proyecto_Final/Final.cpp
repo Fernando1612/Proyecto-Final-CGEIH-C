@@ -89,7 +89,7 @@ float movShan = 0.0f, //con esto se movera el deportista
 int estadoShan = 1.0f;
 float orienShan = 0.0f; // para que llegue a diferentes posiciones
 
-		movPersonaZ = 0.0f,
+float movPersonaZ = 0.0f;
 
 bool	animacion = false,
 		recorrido1 = true,
@@ -339,8 +339,8 @@ void animate(void)
 	default:
 		break;
 
-	movPersonaZ += 0.1f;
 	}
+	movPersonaZ += 0.1f;
 }
 
 void getResolution()
@@ -446,7 +446,7 @@ int main()
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
 	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
 	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
-	Model rueda("resources/objects/Bocho/Rueda.obj");//ruedas 
+	Model llanta("resources/objects/Bocho/Rueda.obj");//ruedas 
 
 
 	
@@ -755,26 +755,26 @@ int main()
 		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		rueda.Draw(staticShader);	//Izq delantera
+		llanta.Draw(staticShader);	//Izq delantera
 
 		model = glm::translate(tmp, glm::vec3(-13.0f, 2.0f, 30.0f));
 		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		staticShader.setMat4("model", model);
-		rueda.Draw(staticShader);	//Der delantera
+		llanta.Draw(staticShader);	//Der delantera
 
 		model = glm::translate(tmp, glm::vec3(-13.0f, 2.0f, -20.0f));
 		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		staticShader.setMat4("model", model);
-		rueda.Draw(staticShader);	//Der trasera
+		llanta.Draw(staticShader);	//Der trasera
 
 		model = glm::translate(tmp, glm::vec3(13.0f, 2.0f, -20.0f));
 		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		rueda.Draw(staticShader);	//Izq trase      
+		llanta.Draw(staticShader);	//Izq trase      
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje
 		// -------------------------------------------------------------------------------------------------------------------------
