@@ -10,6 +10,7 @@
 /*------------- Alumno: Vaquero Barajas Alexis-------------*/
 /*------------- No. Cuenta:  316073934      ---------------*/
 
+//ejemplo de cambio para mi rama Daniel
 #include <Windows.h>
 
 #include <glad/glad.h>
@@ -34,7 +35,11 @@
 #include <Skybox.h>
 #include <iostream>
 
-//#pragma comment(lib, "winmm.lib")
+#include <mmsystem.h>
+
+// Pragma para musica
+#pragma comment(lib, "winmm.lib")
+bool sound = true;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -51,7 +56,7 @@ GLFWmonitor *monitors;
 void getResolution(void);
 
 // camera
-Camera camera(glm::vec3(0.0f, 10.0f, 90.0f));
+Camera camera(glm::vec3(0.0f, 50.0f, 200.0f));
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -73,6 +78,7 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 //para el movimiento del automovil
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
+
 		orienta = 90.0f,
 		girollantas = 0.0f,
 		estadoAuto = 1.0f;
@@ -83,12 +89,20 @@ float movShan = 0.0f, //con esto se movera el deportista
 int estadoShan = 1.0f;
 float orienShan = 0.0f; // para que llegue a diferentes posiciones
 
+		movPersonaZ = 0.0f,
+
 bool	animacion = false,
 		recorrido1 = true,
 		recorrido2 = false,
 		recorrido3 = false,
 		recorrido4 = false;
 
+
+
+float movBici_z = 0.0f,
+	  movBici_x = 0.0f;
+
+float movTrici_z = 170.0f;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -101,6 +115,8 @@ float	incX = 0.0f,
 		incZ = 0.0f,
 		rotInc = 0.0f,
 		giroMonitoInc = 0.0f;
+
+float giroPedales = 0.0f;
 
 #define MAX_FRAMES 9
 int i_max_steps = 60;
@@ -157,8 +173,13 @@ void interpolation(void)
 
 }
 
+
 void animate(void)
 {
+	giroPedales += 5.5f;
+	movBici_z += 0.1f;
+	movTrici_z += 0.1f;
+
 	if (play)
 	{
 		if (i_curr_steps >= i_max_steps) //end of animation between frames?
@@ -191,6 +212,7 @@ void animate(void)
 			i_curr_steps++;
 		}
 	}
+
 
 	//Vehículo (se estaciona)
 	if (animacion)
@@ -316,6 +338,8 @@ void animate(void)
 		break;
 	default:
 		break;
+
+	movPersonaZ += 0.1f;
 	}
 }
 
@@ -327,6 +351,12 @@ void getResolution()
 	SCR_HEIGHT = (mode->height) - 80;
 }
 
+void music() {
+	if (sound) {
+		bool played = PlaySound(L"TamalesOaxaquenos.wav", NULL, SND_LOOP | SND_ASYNC);
+		sound = false;
+	}
+}
 
 int main()
 {
@@ -412,8 +442,6 @@ int main()
 	//Model carro("resources/objects/lambo/carroceria.obj");//en caso de ocuparlo tambien
 	//Model llanta("resources/objects/lambo/Wheel.obj");//llantas del lambo
 	Model casaVieja("resources/objects/casa/OldHouse.obj");
-	//Model cubo("resources/objects/cubo/cube02.obj");
-	Model casaDoll("resources/objects/casa/DollHouse.obj");
 	Model edificio("resources/objects/edificio/edificio.obj");
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
 	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
@@ -421,11 +449,40 @@ int main()
 	Model rueda("resources/objects/Bocho/Rueda.obj");//ruedas 
 
 
-	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
-	//animacionPersonaje.initShaders(animShader.ID);
+	
 
-	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
-	//ninja.initShaders(animShader.ID);
+	Model pedales("resources/objects/bicicleta/pedales.obj");
+	Model cuadro("resources/objects/bicicleta/cuadro.obj");
+	Model rueda("resources/objects/bicicleta/rueda.obj");
+
+	Model pedalesTriciclo("resources/objects/triciclo/pedalesTriciclo.obj");
+	Model triciclo("resources/objects/triciclo/triciclo2F.obj");
+	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");
+
+	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
+
+	// Modelos dinamicos
+	//------------------
+	
+	// Dog
+	ModelAnim dog("resources/objects/Dog/doggo.dae");
+	dog.initShaders(animShader.ID);
+
+
+	// Persona Paseando
+	ModelAnim womanWalk("resources/objects/PersonaCaminando/woman.dae");
+	womanWalk.initShaders(animShader.ID);
+
+	// Persona Caminando
+	ModelAnim manWalk("resources/objects/PersonaCaminando2/man.dae");
+	manWalk.initShaders(animShader.ID);
+
+	ModelAnim manBici("resources/objects/bicicleta/man.dae");
+	manBici.initShaders(animShader.ID);
+	
+
+	ModelAnim manTricycle("resources/objects/triciclo/manTricycle.dae");
+	manTricycle.initShaders(animShader.ID);
 
 	ModelAnim shannon("resources/objects/Deportista/Running.dae");//cargando a SHANNON (deportista)
 	shannon.initShaders(animShader.ID);
@@ -500,12 +557,12 @@ int main()
 
 		//// Light
 		glm::vec3 lightColor = glm::vec3(0.6f);
-		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
+		glm::vec3 diffuseColor = lightColor * glm::vec3(1.0f);
+		glm::vec3 ambientColor = diffuseColor * glm::vec3(1.0f);
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje Animacion
+		// Animaciones
 		// -------------------------------------------------------------------------------------------------------------------------
 		//Remember to activate the shader with the animation
 		animShader.use();
@@ -516,9 +573,10 @@ int main()
 		animShader.setFloat("material.shininess", 32.0f);
 		animShader.setVec3("light.ambient", ambientColor);
 		animShader.setVec3("light.diffuse", diffuseColor);
-		animShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+		animShader.setVec3("light.specular", 0.0f, 0.0f, 0.0f);
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
+
 
 		//model = glm::translate(glm::mat4(1.0f), glm::vec3(-40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
 		//model = glm::scale(model, glm::vec3(1.2f));	// it's a bit too big for our scene, so scale it down
@@ -543,17 +601,47 @@ int main()
 		//animShader.setMat4("model", model);
 		//ninja.Draw(animShader);
 
+		//-------------------Triciclo---------------------------------
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, movTrici_z));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2));
+		animShader.setMat4("model", model);
+		manTricycle.Draw(animShader);
+
+		//-------------------Bicicleta--------------------------------
+		//
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, movBici_z));
+		model = glm::scale(model, glm::vec3(0.2f));
+		animShader.setMat4("model", model);
+		manBici.Draw(animShader);
+
+
+		// DOG
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(310.0f, 0.0f, movPersonaZ)); 
+		model = glm::scale(model, glm::vec3(0.3f));	
+		animShader.setMat4("model", model);
+		dog.Draw(animShader);
+
+		// Persona Paseando
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, 0.0f, movPersonaZ));
+		model = glm::scale(model, glm::vec3(0.1f));
+		animShader.setMat4("model", model);
+		womanWalk.Draw(animShader);
+
+		// Persona Caminando
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(8.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(0.1f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		animShader.setMat4("model", model);
+		manWalk.Draw(animShader);
+		
+
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
 		staticShader.use();
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, 0.0f, -10.0f));
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		casaDoll.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
@@ -583,6 +671,74 @@ int main()
 		model = glm::scale(model, glm::vec3(1.0f));
 		staticShader.setMat4("model", model);
 		entrada.Draw(staticShader);
+
+		// Cancha
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, -105.0f));
+		model = glm::scale(model, glm::vec3(9.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		courtBasket.Draw(staticShader);
+
+		// -------------------------------------------------------------------------------------------------------------------------
+		// Persona en Triciclo
+		// -------------------------------------------------------------------------------------------------------------------------
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.0f, movTrici_z));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		triciclo.Draw(staticShader);
+		
+		model = glm::translate(tmp, glm::vec3(0.0f, 7.2f, -6.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		pedalesTriciclo.Draw(staticShader);
+
+		model = glm::translate(tmp, glm::vec3(-0.95f, 8.2f, -18.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		ruedaTriciclo.Draw(staticShader); // rueda trasera
+
+		model = glm::translate(tmp, glm::vec3(-11.5f, 8.2f, 17.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		ruedaTriciclo.Draw(staticShader); // rueda delantera der
+
+		model = glm::translate(tmp, glm::vec3(11.0f, 8.2f, 17.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		ruedaTriciclo.Draw(staticShader); // rueda delantera izq
+		
+		
+
+		// -------------------------------------------------------------------------------------------------------------------------
+		// Persona en bici
+		// -------------------------------------------------------------------------------------------------------------------------
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, movBici_z));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		cuadro.Draw(staticShader);
+		
+		model = glm::translate(tmp, glm::vec3(0.0f,6.0f, 1.0f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		pedales.Draw(staticShader);
+
+		model = glm::translate(tmp, glm::vec3(-0.5f, 6.5f, 13.25f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		rueda.Draw(staticShader); // Adelante
+
+		model = glm::translate(tmp, glm::vec3(-0.5f, 6.5f, -7.5f));
+		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		staticShader.setMat4("model", model);
+		rueda.Draw(staticShader); // Atras
+		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
@@ -746,6 +902,11 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		lightPosition.x++;
 	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
 		lightPosition.x--;
+
+	//Musica
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+		music();
+	}
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
