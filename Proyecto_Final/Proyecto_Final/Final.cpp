@@ -431,7 +431,7 @@ int main()
 
 	// load models
 	// -----------
-	Model piso("resources/objects/piso/piso.obj");
+	
 	Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -447,6 +447,7 @@ int main()
 	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
 	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
 	Model llanta("resources/objects/Bocho/Rueda.obj");//ruedas 
+	Model plano("resources/objects/Plano/planoVilla.obj");//plano de la unidad
 
 
 	
@@ -643,15 +644,15 @@ int main()
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
 
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.2));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));//proporciones de todo con un plano
+		model = glm::scale(model, glm::vec3(12.0f));
 		staticShader.setMat4("model", model);
-		piso.Draw(staticShader);
+		plano.Draw(staticShader);
+		
 
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
+		model = glm::scale(model, glm::vec3(4.0f));
 		staticShader.setMat4("model", model);
 		casaVieja.Draw(staticShader);
 
@@ -673,7 +674,7 @@ int main()
 		entrada.Draw(staticShader);
 
 		// Cancha
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, -105.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));
 		model = glm::scale(model, glm::vec3(9.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
