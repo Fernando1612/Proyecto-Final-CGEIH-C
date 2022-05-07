@@ -662,6 +662,18 @@ int main()
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-160.0f, 0.0f, 155.0f));//edificio 3 de villa
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		edificiosVilla.Draw(staticShader);
+		
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(389.0f, 0.0f, 100.0f));//edificio 4 de villa
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		edificiosVilla.Draw(staticShader);
 		
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f));
