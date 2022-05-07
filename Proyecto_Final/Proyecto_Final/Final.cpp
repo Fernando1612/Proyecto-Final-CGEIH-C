@@ -264,11 +264,11 @@ void animate(void)
 
 	//deportista: va a hacer Suicidios
 	switch (estadoShan){
-	case 1://lega a 50
+	case 1://lega a 20
 		if (IdaRegresoShan == 1)
 		{
 			movShan += 0.5f;//con esto el deportista sale hacia adelante
-			if (movShan >= 50) {
+			if (movShan >= 20) {
 				IdaRegresoShan = 0;//cambio de estado
 				orienShan = 180.0f;//giro para el regreso
 			}
@@ -282,11 +282,11 @@ void animate(void)
 			}
 		}
 		break;
-	case 2://llega a 100
+	case 2://llega a 80
 		if (IdaRegresoShan == 1 && estadoShan == 2)
 		{
 			movShan += 0.5f;//con esto el deportista sale hacia adelante
-			if (movShan >= 100) {
+			if (movShan >= 80) {
 				IdaRegresoShan = 0;//cambio de estado
 				orienShan = 180.0f;//giro para el regreso
 			}
@@ -300,11 +300,11 @@ void animate(void)
 			}
 		}
 		break;
-	case 3://llega a 150
+	case 3://llega a 120
 		if (IdaRegresoShan == 1)
 		{
 			movShan += 0.5f;//con esto el deportista sale hacia adelante
-			if (movShan >= 150) {
+			if (movShan >= 120) {
 				IdaRegresoShan = 0;//cambio de estado
 				orienShan = 180.0f;//giro para el regreso
 			}
@@ -318,11 +318,11 @@ void animate(void)
 			}
 		}
 		break;
-	case 4://llega a 200
+	case 4://llega a 160
 		if (IdaRegresoShan == 1)
 		{
 			movShan += 0.5f;//con esto el deportista sale hacia adelante
-			if (movShan >= 200) {
+			if (movShan >= 160) {
 				IdaRegresoShan = 0;//cambio de estado
 				orienShan = 180.0f;//giro para el regreso
 			}
@@ -587,9 +587,9 @@ int main()
 		//animacionPersonaje.Draw(animShader);
 
 		//dibujar a Shannon (deportista)
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(80.0f, 0.0f, movShan));//ubicar mi personaje //la var de mov debe colocarse bien
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 70.0f + movShan));//ubicar mi personaje //la var de mov debe colocarse bien
 		model = glm::rotate(model, glm::radians(orienShan), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f));//escala
+		model = glm::scale(model, glm::vec3(0.07f));//escala
 		animShader.setMat4("model", model);
 		shannon.Draw(animShader);
 
@@ -731,7 +731,8 @@ int main()
 		oxxo.Draw(staticShader);
 
 		// ENTRADA
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 400.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(550.0f, 0.0f, 100.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
 		staticShader.setMat4("model", model);
 		entrada.Draw(staticShader);
@@ -808,7 +809,7 @@ int main()
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-450.0f + movAuto_x, 4.5f, -100.0f + movAuto_z));
+		model = glm::translate(model, glm::vec3(-250.0f + movAuto_x, 4.5f, 500.0f + movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
