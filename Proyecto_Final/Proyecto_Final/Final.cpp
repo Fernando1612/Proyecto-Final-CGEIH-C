@@ -692,6 +692,30 @@ int main()
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-368.0f, 0.0f, 190.0f));//edificio 8 de villa
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		edificiosVilla.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-368.0f, 0.0f, -70.0f));//edificio 9 de villa
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		edificiosVilla.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.0f, -280.0f));//edificio 10 de villa
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		edificiosVilla.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.0f, -490.0f));//edificio 11 de villa
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		edificiosVilla.Draw(staticShader);
 		
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f));
