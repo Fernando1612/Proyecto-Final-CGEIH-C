@@ -79,7 +79,7 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
 
-		orienta = 90.0f,
+		orienta = 180.0f,
 		girollantas = 0.0f,
 		estadoAuto = 1.0f;
 
@@ -809,7 +809,7 @@ int main()
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-250.0f + movAuto_x, 4.5f, 500.0f + movAuto_z));
+		model = glm::translate(model, glm::vec3(-225.0f + movAuto_x, 4.5f, 500.0f + movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		staticShader.setMat4("model", model);
