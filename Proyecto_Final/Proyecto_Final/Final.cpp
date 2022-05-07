@@ -448,6 +448,7 @@ int main()
 	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
 	Model llanta("resources/objects/Bocho/Rueda.obj");//ruedas 
 	Model plano("resources/objects/Plano/planoVilla.obj");//plano de la unidad
+	Model edificiosVilla("resources/objects/EdificioVilla/EdificioVilla.obj");//edificios de la unidad
 
 
 	
@@ -650,11 +651,11 @@ int main()
 		plano.Draw(staticShader);
 		
 
-
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(4.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
-		casaVieja.Draw(staticShader);
+		edificiosVilla.Draw(staticShader);
+		
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
