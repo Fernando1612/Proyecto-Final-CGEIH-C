@@ -1,6 +1,0 @@
-Datos de la descarga:
-Personaje: Shannon.
-Animacion : Running.
-Pagina: MIXAMO
-https://www.mixamo.com/#/?page=1&query=running 
-fECHA: 28-04-2022
