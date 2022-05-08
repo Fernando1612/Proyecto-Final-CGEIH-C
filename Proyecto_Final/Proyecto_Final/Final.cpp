@@ -218,45 +218,81 @@ void animate(void)
 	if (animacion)
 	{
 		if (estadoAuto == 1) {
-			movAuto_x += 3.0f;
+			movAuto_z -= 3.0f;
 			girollantas += 3.0f;
-			if (movAuto_x >= 200) {
-				orienta = 0.0f;
+			if (movAuto_z <= -260) {
+				orienta = 90.0f;
 				estadoAuto = 2.0f;
 				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 2) {
-			movAuto_z += 3.0f;
+			movAuto_x += 3.0f;
 			girollantas += 3.0f;
-			if (movAuto_z >= 300) {
-				orienta = 90.0f;
+			if (movAuto_x >= 360) {
+				orienta = 0.0f;
 				estadoAuto = 3.0f;
 				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 3) {
-			movAuto_x += 3.0f;
+			movAuto_z += 3.0f;
 			girollantas += 3.0f;
-			if (movAuto_x >= 500) {
-				orienta = 0.0f;
+			if (movAuto_z >= -30) {
+				orienta = 90.0f;
 				estadoAuto = 4.0f;
 				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 4) {
-			movAuto_z += 3.0f;
+			movAuto_x += 3.0f;
 			girollantas += 3.0f;
-			if (movAuto_z >= 500) {
-				orienta = -90.0f;
+			if (movAuto_x >= 580) {
+				orienta = 180.0f;
 				estadoAuto = 5.0f;
 				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 5) {
+			movAuto_z -= 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_z <= -330) {
+				orienta = 270.0f;
+				estadoAuto = 6.0f;
+				//animacion = FALSE;//no debe pararse
+			}
+		}
+		if (estadoAuto == 6) {
 			movAuto_x -= 3.0f;
 			girollantas += 3.0f;
 			if (movAuto_x <= 450) {
+				orienta = 180.0f;
+				estadoAuto = 7.0f;
+				//animacion = FALSE;//no debe pararse
+			}
+		}
+		if (estadoAuto == 7) {
+			movAuto_z -= 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_z <= -750) {
+				orienta = 90.0f;
+				estadoAuto = 8.0f;
+				//animacion = FALSE;
+			}
+		}
+		if (estadoAuto == 8) {
+			movAuto_x += 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_x >= 650) {
+				orienta = 180.0f;
+				estadoAuto = 9.0f;
+				//animacion = FALSE;//no debe pararse
+			}
+		}
+		if (estadoAuto == 9) {
+			movAuto_z -= 3.0f;
+			girollantas += 3.0f;
+			if (movAuto_z <= -780) {
 				animacion = FALSE;
 			}
 		}
