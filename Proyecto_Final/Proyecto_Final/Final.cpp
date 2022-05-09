@@ -87,11 +87,18 @@ float	movAuto_x = 0.0f,
 float movShan = 0.0f, //con esto se movera el deportista
 	IdaRegresoShan = 1.0f; //para que avance y regrese
 int estadoShan = 1.0f;
-float orienShan = 0.0f; // para que llegue a diferentes posiciones
+float orienShan = 0.0f; // para que gire a diferentes posiciones
 
 float movPersonaZ = 0.0f;
 
-bool	animacion = false,
+//para el movimiento del constructor
+float movConstX = 580.0f,
+	movConstZ = 0.0f,
+	OrientaConst = 180.0f,
+	estadoConst = 1.0f;
+
+bool	animacion = false,//para el carro
+		animacionConst = false,//para el constructor
 		recorrido1 = true,
 		recorrido2 = false,
 		recorrido3 = false,
@@ -292,14 +299,24 @@ void animate(void)
 		if (estadoAuto == 9) {
 			movAuto_z -= 3.0f;
 			girollantas += 3.0f;
-			if (movAuto_z <= -780) {
+			if (movAuto_z <= -800) {
 				animacion = FALSE;
 			}
 		}
 	}
 
-	//deportista: va a hacer Suicidios
-	switch (estadoShan){
+	if (animacionConst) {//presionar 1 para que el ocnstructor camine
+		if (estadoConst == 1) {
+			movConstX -= 1.0f;
+			if (movConstX <= 500) {
+				OrientaConst = 90.0f;
+				estadoConst = 2.0f;
+				animacionConst = FALSE;//no debe pararse
+			}
+		}
+	}
+
+	switch (estadoShan){//deportista: va a hacer Suicidios
 	case 1://lega a 20
 		if (IdaRegresoShan == 1)
 		{
@@ -622,12 +639,6 @@ int main()
 		//animShader.setMat4("model", model);
 		//animacionPersonaje.Draw(animShader);
 
-		//dibujar a Shannon (deportista)
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 70.0f + movShan));//ubicar mi personaje //la var de mov debe colocarse bien
-		model = glm::rotate(model, glm::radians(orienShan), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.07f));//escala
-		animShader.setMat4("model", model);
-		shannon.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
@@ -662,16 +673,23 @@ int main()
 
 		// Persona Paseando
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, 0.0f, movPersonaZ));
-		model = glm::scale(model, glm::vec3(0.1f));
+		model = glm::scale(model, glm::vec3(0.09f));
 		animShader.setMat4("model", model);
 		womanWalk.Draw(animShader);
 
 		// Persona Caminando
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(8.0f, 0.0f, -40.0f));
-		model = glm::scale(model, glm::vec3(0.1f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(movConstX, 0.0f, 120.0f + movConstZ));
+		model = glm::scale(model, glm::vec3(0.09f));
+		model = glm::rotate(model, glm::radians(OrientaConst), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		manWalk.Draw(animShader);
+
+		//Deportista
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 70.0f + movShan));
+		model = glm::rotate(model, glm::radians(orienShan), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.09f));//escala
+		animShader.setMat4("model", model);
+		shannon.Draw(animShader);
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -773,7 +791,7 @@ int main()
 		staticShader.setMat4("model", model);
 		entrada.Draw(staticShader);
 
-		// Cancha
+		// CANCHA
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));
 		model = glm::scale(model, glm::vec3(9.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -845,34 +863,34 @@ int main()
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-225.0f + movAuto_x, 4.5f, 500.0f + movAuto_z));
+		model = glm::translate(model, glm::vec3(-225.0f + movAuto_x, 1.5f, 500.0f + movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
+		model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));
 		staticShader.setMat4("model", model);
 		Carro.Draw(staticShader);
 		
-		model = glm::translate(tmp, glm::vec3(13.0f, 2.0f, 30.0f));
+		model = glm::translate(tmp, glm::vec3(6.7f, 1.0f, 15.0f));
 		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));//giro de las llantas
-		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
+		model = glm::scale(model, glm::vec3(0.0044f, 0.0044f, 0.0044f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Izq delantera
 
-		model = glm::translate(tmp, glm::vec3(-13.0f, 2.0f, 30.0f));
+		model = glm::translate(tmp, glm::vec3(-6.7f, 1.0f, 15.0f));
 		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
+		model = glm::scale(model, glm::vec3(0.0044f, 0.0044f, 0.0044f));
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Der delantera
 
-		model = glm::translate(tmp, glm::vec3(-13.0f, 2.0f, -20.0f));
+		model = glm::translate(tmp, glm::vec3(-6.7f, 1.0f, -10.0f));
 		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
+		model = glm::scale(model, glm::vec3(0.0044f, 0.0044f, 0.0044f));
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Der trasera
 
-		model = glm::translate(tmp, glm::vec3(13.0f, 2.0f, -20.0f));
+		model = glm::translate(tmp, glm::vec3(6.7f, 1.0f, -10.0f));
 		model = glm::rotate(model, glm::radians(girollantas), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.009f, 0.009f, 0.009f));
+		model = glm::scale(model, glm::vec3(0.0044f, 0.0044f, 0.0044f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Izq trase      
@@ -1009,9 +1027,13 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		music();
 	}
 
-	//Car animation
+	//Carro animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
 		animacion ^= true;
+
+	//Constructor animation
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
+		animacionConst ^= true;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
