@@ -492,6 +492,7 @@ int main()
 	Model brazoDer("resources/objects/Personaje/brazoder.obj");
 	Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
 	Model cabeza("resources/objects/Personaje/cabeza.obj");
+
 	//Model carro("resources/objects/lambo/carroceria.obj");//en caso de ocuparlo tambien
 	//Model llanta("resources/objects/lambo/Wheel.obj");//llantas del lambo
 	Model casaVieja("resources/objects/casa/OldHouse.obj");
@@ -502,6 +503,7 @@ int main()
 	Model llanta("resources/objects/Bocho/Rueda.obj");//ruedas 
 	Model plano("resources/objects/Plano/planoVilla.obj");//plano de la unidad
 	Model edificiosVilla("resources/objects/EdificioVilla/EdificioVilla.obj");//edificios de la unidad
+	Model iglesia("resources/objects/Iglesia/iglesia.obj");//iglesia
 
 
 	
@@ -703,6 +705,12 @@ int main()
 		model = glm::scale(model, glm::vec3(12.0f));
 		staticShader.setMat4("model", model);
 		plano.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-170.0f, 0.1f, -140.0f));//iglesia
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(22.0f));
+		staticShader.setMat4("model", model);
+		iglesia.Draw(staticShader);
 		
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, -75.0f));//edificio 1 de villa
