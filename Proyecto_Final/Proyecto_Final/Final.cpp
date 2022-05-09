@@ -92,7 +92,7 @@ float orienShan = 0.0f; // para que gire a diferentes posiciones
 float movPersonaZ = 0.0f;
 
 //para el movimiento del constructor
-float movConstX = 580.0f,
+float movConstX = 0.0f,
 	movConstZ = 0.0f,
 	OrientaConst = 180.0f,
 	estadoConst = 1.0f;
@@ -307,11 +307,65 @@ void animate(void)
 
 	if (animacionConst) {//presionar 1 para que el ocnstructor camine
 		if (estadoConst == 1) {
-			movConstX -= 1.0f;
-			if (movConstX <= 500) {
+			movConstX -= 0.6f;
+			if (movConstX <= -90) {
 				OrientaConst = 90.0f;
 				estadoConst = 2.0f;
-				animacionConst = FALSE;//no debe pararse
+				//animacionConst = FALSE;//no debe pararse
+			}
+		}
+		if (estadoConst == 2) {
+			movConstZ -= 0.6f;
+			if (movConstZ <= -85) {
+				OrientaConst = 180.0f;
+				estadoConst = 3.0f;
+				//animacionConst = FALSE;//no debe pararse
+			}
+		}
+		if (estadoConst == 3) {
+			movConstX -= 0.6f;
+			if (movConstX <= -290) {
+				OrientaConst = 90.0f;
+				estadoConst = 4.0f;
+				//animacionConst = FALSE;//no debe pararse
+			}
+		}
+		if (estadoConst == 4) {
+			movConstZ -= 0.6f;
+			if (movConstZ <= -200) {
+				OrientaConst = 180.0f;
+				estadoConst = 5.0f;
+				//animacionConst = FALSE;//no debe pararse
+			}
+		}
+		if (estadoConst == 5 && estadoAuto != 2) {//solo cruza si es que el carro no esta pasando por ahi
+			movConstX -= 0.6f;
+			if (movConstX <= -370) {
+				OrientaConst = 90.0f;
+				estadoConst = 6.0f;
+				//animacionConst = FALSE;//no debe pararse
+			}
+		}
+		if (estadoConst == 6) {
+			movConstZ -= 0.6f;
+			if (movConstZ <= -275) {
+				OrientaConst = 180.0f;
+				estadoConst = 7.0f;
+				//animacionConst = FALSE;//no debe pararse
+			}
+		}
+		if (estadoConst == 7) {
+			movConstX -= 0.6f;
+			if (movConstX <= -440) {
+				OrientaConst = -90.0f;
+				estadoConst = 8.0f;
+				//animacionConst = FALSE;//no debe pararse
+			}
+		}
+		if (estadoConst == 8) {
+			movConstZ += 0.6f;
+			if (movConstZ >= -260) {
+				animacionConst = FALSE;
 			}
 		}
 	}
@@ -678,7 +732,7 @@ int main()
 		womanWalk.Draw(animShader);
 
 		// Persona Caminando
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(movConstX, 0.0f, 120.0f + movConstZ));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(580.0f + movConstX, 0.0f, 120.0f + movConstZ));
 		model = glm::scale(model, glm::vec3(0.09f));
 		model = glm::rotate(model, glm::radians(OrientaConst), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
