@@ -114,6 +114,9 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
     * "A" : mover la cámara hacia la izquierda ⬅️.
     * "D" : mover la cámara hacia la derecha ➡️.
     
+    Musica:
+    * "Z" : incia la música :notes:.
+ 
     Animaciones:
  
     * "SPACE" : activar o desactivar la animacion del veiculo 🚗.
@@ -150,9 +153,6 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
     <div align="Center">
       <img src="img/Captura17.jpg" alt="AnimacionDeportista"></img>
     <div align="justify">
-
-* Musica:
-   * "Z" : incia la música :notes:.
     
 * Movimientos del mouse:
     * El deslizamiento del mouse 🔁 a la izquierda o derecha, arriba o abajo realiza el giro de la cámara 📷 en dicha dirección de deslizado, el field of view 🔍 se mueve como sucede con el cursor de la computadora.
