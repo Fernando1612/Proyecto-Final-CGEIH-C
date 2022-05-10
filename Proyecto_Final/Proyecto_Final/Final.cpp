@@ -10,7 +10,6 @@
 /*------------- Alumno: Vaquero Barajas Alexis-------------*/
 /*------------- No. Cuenta:  316073934      ---------------*/
 
-//ejemplo de cambio para mi rama Daniel
 #include <Windows.h>
 
 #include <glad/glad.h>
@@ -89,7 +88,12 @@ float movShan = 0.0f, //con esto se movera el deportista
 int estadoShan = 1.0f;
 float orienShan = 0.0f; // para que gire a diferentes posiciones
 
-float movPersonaZ = 0.0f;
+#define SPEED_MOV 0.2f
+float	rotDogPerson = 180.0f,
+		movPersonX = 0.0f,
+		movPersonZ = 0.0f,
+		movDogX = 0.0f,
+		movDogZ = 0.0f;
 
 //para el movimiento del constructor
 float movConstX = 0.0f,
@@ -105,6 +109,7 @@ bool	animacion = false,//para el carro
 		recorrido4 = false;
 
 int estado_trici = 0,
+	estado_dogPerson = 0,
 	estado_bici = 0;
 
 float movBici_z = -5.0f,
@@ -451,8 +456,7 @@ void animate(void)
 		break;
 
 	}
-	movPersonaZ += 0.1f;
-
+	
 	switch (estado_trici)
 	{
 	case 0:
@@ -664,6 +668,75 @@ void animate(void)
 		break;
 	}
 
+	switch (estado_dogPerson) {
+		case 0:
+			if (movPersonZ <= 170.0f) {
+				rotDogPerson = 0.0f;
+				movDogZ += SPEED_MOV;
+				movPersonZ += SPEED_MOV;
+			} else {
+				movDogZ = movPersonZ - 5.0f;
+				estado_dogPerson = 1;
+			}
+			break;
+		case 1:
+			if (movPersonX <= 220.0f) {
+				rotDogPerson = 90.0f;
+				movDogX += SPEED_MOV;
+				movPersonX += SPEED_MOV;
+			} else {
+				movDogX = movPersonX + 5.0f;
+				estado_dogPerson = 2;
+			}
+			break;
+		case 2:
+			if (movPersonZ <= 250.0f) {
+				rotDogPerson = 0.0f;
+				movDogZ += SPEED_MOV;
+				movPersonZ += SPEED_MOV;
+			}
+			else {
+				movDogZ = movPersonZ + 10.0f;
+				estado_dogPerson = 3;
+			}
+			break;
+		case 3:
+			if (movPersonX >= -80.0f) {
+				rotDogPerson = 270.0f;
+				movDogX -= SPEED_MOV;
+				movPersonX -= SPEED_MOV;
+			}
+			else {
+				movDogX = movPersonX - 10.0f;
+				estado_dogPerson = 4;
+			}
+			break;
+		case 4:
+			if (movPersonZ >= 0.0f) {
+				rotDogPerson = 180.0f;
+				movDogZ -= SPEED_MOV;
+				movPersonZ -= SPEED_MOV;
+			}
+			else {
+				movDogZ = movPersonZ - 5.0f;
+				estado_dogPerson = 5;
+			}
+			break;
+		
+		case 5:
+			if (movPersonX <= 5.0f) {
+				rotDogPerson = 90.0f;
+				movDogX += SPEED_MOV;
+				movPersonX += SPEED_MOV;
+			}
+			else {
+				movDogZ = movPersonX + 5.0f;
+				estado_dogPerson = 0;
+				movPersonZ = movDogZ = 0.0f;
+				movPersonX = movDogX = 0.0f;
+			}
+			break;
+	}
 }
 
 void getResolution()
@@ -904,23 +977,6 @@ int main()
 		animShader.setVec3("viewPos", camera.Position);
 
 
-		//model = glm::translate(glm::mat4(1.0f), glm::vec3(-40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		//model = glm::scale(model, glm::vec3(1.2f));	// it's a bit too big for our scene, so scale it down
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		//animShader.setMat4("model", model);
-		//animacionPersonaje.Draw(animShader);
-
-
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Segundo Personaje Animacion
-		// -------------------------------------------------------------------------------------------------------------------------
-
-		//model = glm::translate(glm::mat4(1.0f), glm::vec3(40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		//model = glm::scale(model, glm::vec3(0.5f));	// it's a bit too big for our scene, so scale it down
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		//animShader.setMat4("model", model);
-		//ninja.Draw(animShader);
-
 		//-------------------Triciclo---------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(movTrici_x, 1.0f, movTrici_z));
 		model = glm::scale(model, glm::vec3(0.09));
@@ -939,14 +995,16 @@ int main()
 
 		
 		// DOG
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(310.0f, 0.0f, movPersonaZ)); 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(290.0f + movDogX, 0.0f, 0.0f + movDogZ)); 
 		model = glm::scale(model, glm::vec3(0.3f));	
+		model = glm::rotate(model, glm::radians(rotDogPerson), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		dog.Draw(animShader);
 
 		// Persona Paseando
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, 0.0f, movPersonaZ));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(285.0 + movPersonX, 0.0f, 0.0f + movPersonZ));
 		model = glm::scale(model, glm::vec3(0.09f));
+		model = glm::rotate(model, glm::radians(rotDogPerson), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		womanWalk.Draw(animShader);
 
@@ -1185,7 +1243,8 @@ int main()
 		model = glm::scale(model, glm::vec3(0.0044f, 0.0044f, 0.0044f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Izq trase      
+		llanta.Draw(staticShader);	//Izq trase   
+
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje
 		// -------------------------------------------------------------------------------------------------------------------------
