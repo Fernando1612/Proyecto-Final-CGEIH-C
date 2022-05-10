@@ -774,14 +774,10 @@ int main()
 	Model plano("resources/objects/Plano/planoVilla.obj");//plano de la unidad
 	Model edificiosVilla("resources/objects/EdificioVilla/EdificioVilla.obj");//edificios de la unidad
 	Model iglesia("resources/objects/Iglesia/iglesia.obj");//iglesia
-	
-
-	
-
+	Model arbusto("resources/objects/arbusto/arbusto.obj");//arbusto
 	Model pedales("resources/objects/bicicleta/pedales.obj");
 	Model cuadro("resources/objects/bicicleta/cuadro.obj");
 	Model rueda("resources/objects/bicicleta/rueda.obj");
-
 	Model pedalesTriciclo("resources/objects/triciclo/pedalesTriciclo.obj");
 	Model triciclo("resources/objects/triciclo/triciclo2F.obj");
 	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");
@@ -986,6 +982,17 @@ int main()
 		model = glm::scale(model, glm::vec3(22.0f));
 		staticShader.setMat4("model", model);
 		iglesia.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, 5.0f, 0.0f));//arbusto 1
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f));
+		staticShader.setMat4("model", model);
+		arbusto.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(320.0f, 5.0f, 5.0f));//arbusto 2
+		model = glm::scale(model, glm::vec3(5.0f));
+		staticShader.setMat4("model", model);
+		arbusto.Draw(staticShader);
 		
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, -75.0f));//edificio 1 de villa
