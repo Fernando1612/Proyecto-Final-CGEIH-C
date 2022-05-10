@@ -104,6 +104,14 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
 <div align="Center">
 <img src="img/Captura18.jpg" alt="Programa abierto, posición inicial"></img>
 <div align="justify">
+ 
+ <div align="Center">
+<img src="img/Captura19.jpg" alt="Modelo de la iglesia y su ubicación"></img>
+<div align="justify">
+ 
+ <div align="Center">
+<img src="img/Captura20.jpg" alt="Modelo de la tienda Oxxo y su ubicación"></img>
+<div align="justify">
 #### Funciones
 * Teclado:
     * "Esc" : para salir de la ventana / terminar el programa. ❌
