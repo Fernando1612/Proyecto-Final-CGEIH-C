@@ -41,8 +41,10 @@ archivo .exe".
 
 Una vez clonado el proyecto o descomprimido el ZIP: abrir la carpeta generada o ubicación del repositorio en su equipo y dirigirse a ".\ProyectoFinal\ProyectoFinal", ubicar el archivo "ProyectoFinal.exe" y dar doble click para abir. Lo anterior abrirá una ventana con el espacio virtual ejecutandose.
 
-<img src="" alt="Archivo executable"></img>
-
+<div align="Center">
+  <img src="img/Captura2.JPG" alt="Archivo executable"></img>
+<div align="justify">
+ 
 ### Interacción con el ambiente ⛺️
 
 Una vez abierta la ventana; estando dentro del espacio virtual se captura el mouse para funcionar unicamente dentro de este, por lo que no se observa el cursos y el movimiento del mouse solo funciona dentro de la ventana. La interacción se da mediante el teclado y mouse de la computadora.
