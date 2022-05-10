@@ -115,33 +115,44 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
     * "D" : mover la cámara hacia la derecha ➡️.
     
     Animaciones:
-    *"SPACE": activar o desactivar la animacion del veiculo.
-<div align="Center">
-  <img src="img/Captura12.jpg" alt="AnimacionCarro"></img>
-<div align="justify">
-    *"1":     activar la animación de la persona que camina.
- <div align="Center">
-  <img src="img/Captura13.jpg" alt="AnimacionCamina"></img>
-<div align="justify">
-    *La animacion del triciclo no necesita una entrada del usuario.
- <div align="Center">
-  <img src="img/Captura14.jpg" alt="AnimacionTriciclo"></img>
-<div align="justify">
-    *La animacion de la bicicleta no necesita una entrada del usuario.
- <div align="Center">
-  <img src="img/Captura15.jpg" alt="AnimacionBicicleta"></img>
-<div align="justify">
-    *La animacion de la persona paseando no necesita una entrada del usuario.
- <div align="Center">
-  <img src="img/Captura16.jpg" alt="AnimacionPasear"></img>
-<div align="justify">
-    *La animacion del deportista no necesita una entrada del usuario.
- <div align="Center">
-  <img src="img/Captura17.jpg" alt="AnimacionDeportista"></img>
-<div align="justify">
  
-    Musica
-    * "Z" : incia la música :notes:.
+    * "SPACE" : activar o desactivar la animacion del veiculo 🚗.
+    <div align="Center">
+      <img src="img/Captura12.jpg" alt="AnimacionCarro"></img>
+    <div align="justify">
+     
+    * "1"     : activar la animación de la persona que camina 🚶‍♂️. 
+     
+    <div align="Center">
+      <img src="img/Captura13.jpg" alt="AnimacionCamina"></img>
+    <div align="justify">
+     
+    * La animacion del triciclo no necesita una entrada del usuario 🚲.
+     
+    <div align="Center">
+      <img src="img/Captura14.jpg" alt="AnimacionTriciclo"></img>
+    <div align="justify">
+     
+    * La animacion de la bicicleta no necesita una entrada del usuario 🚴‍♂️.
+     
+    <div align="Center">
+      <img src="img/Captura15.jpg" alt="AnimacionBicicleta"></img>
+    <div align="justify">
+     
+    * La animacion de la persona paseando no necesita una entrada del usuario 🚶‍♀️🐕.
+     
+    <div align="Center">
+      <img src="img/Captura16.jpg" alt="AnimacionPasear"></img>
+    <div align="justify">
+     
+    * La animacion del deportista no necesita una entrada del usuario ⛹️‍♂️.
+     
+    <div align="Center">
+      <img src="img/Captura17.jpg" alt="AnimacionDeportista"></img>
+    <div align="justify">
+
+* Musica:
+   * "Z" : incia la música :notes:.
     
 * Movimientos del mouse:
     * El deslizamiento del mouse 🔁 a la izquierda o derecha, arriba o abajo realiza el giro de la cámara 📷 en dicha dirección de deslizado, el field of view 🔍 se mueve como sucede con el cursor de la computadora.
