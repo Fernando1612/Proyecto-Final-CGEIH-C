@@ -130,7 +130,7 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
  
     Animaciones:
  
-    * "SPACE" : activar o desactivar la animacion del veiculo 🚗.
+    * "SPACE" : activar o desactivar la animacion del vehiculo 🚗.
     <div align="Center">
       <img src="img/Captura12.jpg" alt="AnimacionCarro"></img>
     <div align="justify">
