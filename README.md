@@ -61,21 +61,21 @@ Antes de ejectutar el programa comprobamos que todas las bibliotecas y configura
  En el apartado de "General" verificamos que el Conjunto de herramienras de la plataforma sea uno que tengamos descargado puede ser v142 o v143.
  
  <div align="Center">
-  <img src="img/Captur6.jpg" alt="General"></img>
+  <img src="img/Captura6.jpg" alt="General"></img>
 <div align="justify">
  
-Dentro de C/C++ -> Gneral verificar que la palabra "include" se encuentra en directorios de inclusión adicionales. En el Vincluador -> General la palabra "lib" en Directorios de bibliotecas adicionales y finalmente, en Vinculador -> Entrada verificar que las dependencias **Winmm.lib;SDL2.lib;SDL2main.lib;assimp-vc141-mtd.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)** esten incluidas en Dependencias adicionales. 
+Dentro de C/C++ -> Gneral verificar que la palabra **include** se encuentra en directorios de inclusión adicionales. En el Vincluador -> General la palabra **lib** en Directorios de bibliotecas adicionales y finalmente, en Vinculador -> Entrada verificar que las dependencias **Winmm.lib;SDL2.lib;SDL2main.lib;assimp-vc141-mtd.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)** esten incluidas en Dependencias adicionales. 
  
  <div align="Center">
-  <img src="img/Captur7.jpg" alt="Include"></img>
-<div align="justify">
- 
- <div align="Center">
-  <img src="img/Captur8.jpg" alt="lib"></img>
+  <img src="img/Captura7.jpg" alt="Include"></img>
 <div align="justify">
  
  <div align="Center">
-  <img src="img/Captur9.jpg" alt="Dependecias"></img>
+  <img src="img/Captura8.jpg" alt="lib"></img>
+<div align="justify">
+ 
+ <div align="Center">
+  <img src="img/Captura9.jpg" alt="Dependecias"></img>
 <div align="justify">
  
  ### Ejecución con archivo .exe 🚀
