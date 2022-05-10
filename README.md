@@ -121,3 +121,4 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
     
 * Movimientos del mouse:
     * El deslizamiento del mouse 🔁 a la izquierda o derecha, arriba o abajo realiza el giro de la cámara 📷 en dicha dirección de deslizado, el field of view 🔍 se mueve como sucede con el cursor de la computadora.
+    * Scroll del mouse reliza zoom + 🔍 moviéndolo hacia enfrente y zoom - 🔍 hacia atrás. 
