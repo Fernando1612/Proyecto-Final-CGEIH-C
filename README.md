@@ -37,12 +37,55 @@ clonado saltar hasta "Ejecución el archivo .exe".
 La selección "Download ZIP" descargará un archivo .zip del proyecto, habrá que descomprimirlo en su equipo, regresar a este manual y saltarse hasta "Ejecución el
 archivo .exe".
 
+ ### Ejecución con Visual Studio 💻
+ 
+ Si se desea y tiene instalado el IDE Visual Studio puede ejecutar la aplicación siguiendo los siguientes pasos.
+ Tener descargado el proyecto de git-hub y haber descomprimdo la carpeta zip. Una vez teniendo esto abrir Visual Studio y seleccionar la opción "Abrir un proyecto o una solución"
+ 
+ <div align="Center">
+  <img src="img/Captura3.JPG" alt="Abrir proyecto"></img>
+<div align="justify">
+ 
+ Buscar el archivo "Proyecto_Final.sln" dentro de la carpeta descomprimida y dar en el botón de abrir. 
+
+  <div align="Center">
+  <img src="img/Captura4.JPG" alt="Abrir archivo sln"></img>
+<div align="justify">
+ 
+Antes de ejectutar el programa comprobamos que todas las bibliotecas y configuraciones esten cargadas correctamente. Nos dirigimos al explorador de soluciones, hacemos click derecho en el nombre del proyecto y seleccionamos la opción de propiedades.
+ 
+<div align="Center">
+  <img src="img/Captura5.JPG" alt="Propiedades"></img>
+<div align="justify">
+ 
+ En el apartado de "General" verificamos que el Conjunto de herramienras de la plataforma sea uno que tengamos descargado puede ser v142 o v143.
+ 
+ <div align="Center">
+  <img src="img/Captur6.JPG" alt="General"></img>
+<div align="justify">
+ 
+Dentro de C/C++ -> Gneral verificar que la palabra "include" se encuentra en directorios de inclusión adicionales. En el Vincluador -> General la palabra "lib" en Directorios de bibliotecas adicionales y finalmente, en Vinculador -> Entrada verificar que las dependencias **Winmm.lib;SDL2.lib;SDL2main.lib;assimp-vc141-mtd.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)** esten incluidas en Dependencias adicionales. 
+ 
+ <div align="Center">
+  <img src="img/Captur7.JPG" alt="Include"></img>
+<div align="justify">
+ 
+ <div align="Center">
+  <img src="img/Captur8.JPG" alt="lib"></img>
+<div align="justify">
+ 
+ <div align="Center">
+  <img src="img/Captur9.JPG" alt="Dependecias"></img>
+<div align="justify">
+ 
  ### Ejecución con archivo .exe 🚀
 
-Una vez clonado el proyecto o descomprimido el ZIP: abrir la carpeta generada o ubicación del repositorio en su equipo y dirigirse a ".\ProyectoFinal\ProyectoFinal", ubicar el archivo "ProyectoFinal.exe" y dar doble click para abir. Lo anterior abrirá una ventana con el espacio virtual ejecutandose.
+Una vez clonado el proyecto o descomprimido el ZIP: abrir la carpeta generada o ubicación del repositorio en su equipo y dirigirse a ".\Proyecto_Final\Proyecto_Final", ubicar el archivo "Proyecto_Final.exe" y dar doble click para abir. Lo anterior abrirá una ventana con el espacio virtual ejecutandose.
 
-<img src="" alt="Archivo executable"></img>
-
+<div align="Center">
+  <img src="img/Captura2.jpg" alt="Archivo executable"></img>
+<div align="justify">
+ 
 ### Interacción con el ambiente ⛺️
 
 Una vez abierta la ventana; estando dentro del espacio virtual se captura el mouse para funcionar unicamente dentro de este, por lo que no se observa el cursos y el movimiento del mouse solo funciona dentro de la ventana. La interacción se da mediante el teclado y mouse de la computadora.
