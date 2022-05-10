@@ -32,10 +32,9 @@ Descargar el proyecto desde GitHub dando click al boton verde "Code" y seleccion
 <div align="justify">
  
 Si selecciona "Open with GitHub Desktop" requiere tener esta aplicación instalada en su equipo y seguir los pasos para clonar el repositorio de manera local, una vez 
-clonado saltar hasta "Ejecución el archivo .exe".
+clonado saltar hasta ["Ejecución el archivo .exe"](#item1).
 
-La selección "Download ZIP" descargará un archivo .zip del proyecto, habrá que descomprimirlo en su equipo, regresar a este manual y saltarse hasta "Ejecución el
-archivo .exe".
+La selección "Download ZIP" descargará un archivo .zip del proyecto, habrá que descomprimirlo en su equipo, regresar a este manual y saltarse hasta ["Ejecución el archivo .exe"](#item1).
 
  ### Ejecución con Visual Studio 💻
  
@@ -78,6 +77,19 @@ Dentro de C/C++ -> Gneral verificar que la palabra **include** se encuentra en d
   <img src="img/Captura9.jpg" alt="Dependecias"></img>
 <div align="justify">
  
+ Para poner en ejecución el proyecto se debe seleccionar la opción "x86" en la barra superior y verificar que esté seleccionada la opción "Debug" como se muestra en la siguiente imagen.
+ 
+ <div align="Center">
+  <img src="img/Captura10.jpg" alt="X86"></img>
+<div align="justify">
+ 
+ Ya puede ejecutarse el proyecto dando click en el boton "Depurador local de Windows", esto abrirá la ventana del programa.
+ 
+  <div align="Center">
+  <img src="img/Captura11.jpg" alt="X86"></img>
+<div align="justify">
+ 
+ <a name="item1"></a>
  ### Ejecución con archivo .exe 🚀
 
 Una vez clonado el proyecto o descomprimido el ZIP: abrir la carpeta generada o ubicación del repositorio en su equipo y dirigirse a ".\Proyecto_Final\Proyecto_Final", ubicar el archivo "Proyecto_Final.exe" y dar doble click para abir. Lo anterior abrirá una ventana con el espacio virtual ejecutandose.
