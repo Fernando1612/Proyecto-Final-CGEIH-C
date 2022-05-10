@@ -115,7 +115,14 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
     * "D" : mover la cámara hacia la derecha ➡️.
     
     Animaciones:
-    
+    *"SPACE": activar o desactivar la animacion del veiculo.
+ 
+    *"1":     activar la animación de la persona que camina.
+    *La animacion del triciclo no necesita una entrada del usuario.
+    *La animacion de la bicicleta no necesita una entrada del usuario.
+    *La animacion de la persona paseando no necesita una entrada del usuario.
+    *La animacion del deportista no necesita una entrada del usuario.
+ 
     Musica
     * "Z" : incia la música :notes:.
     
