@@ -107,13 +107,13 @@ bool	animacion = false,//para el carro
 int estado_trici = 0,
 	estado_bici = 0;
 
-float movBici_z = -5.0f,
-	  movBici_x = -500.0f,
-	  orientaBici = 0.0f;
+float movBici_z = -5.0f, // posición inicial en z
+	  movBici_x = -500.0f,	// posición inicial en x
+	  orientaBici = 0.0f;	// orientación incial
 
-float movTrici_z = -500.0f,
-	  movTrici_x = -175.0f,
-	  orientaTrici = 0.0f;
+float movTrici_z = -500.0f,	// posición inicial en Z
+	  movTrici_x = -175.0f,	// posición inicial en x
+	  orientaTrici = 0.0f;	// orinetación inical
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -930,7 +930,6 @@ int main()
 		manTricycle.Draw(animShader);
 
 		//-------------------Bicicleta--------------------------------
-		//
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(movBici_x, 0.0f, movBici_z));
 		model  = glm::rotate(model, glm::radians(orientaBici), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.09));
