@@ -1,6 +1,8 @@
 <div align="center">
+ 
+# Manual de Usuario 📖
 
-# Proyecto Final Laboratorio de Computación Gráfica E Interacción Humano-Computadora 👨🏽‍💻
+## Proyecto Final Laboratorio de Computación Gráfica E Interacción Humano-Computadora 👨🏽‍💻
 
 ## Integrantes:
  - Maceda Patricio Fernando🤵🏽
