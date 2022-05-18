@@ -732,6 +732,7 @@ int main()
 	Model Cama("resources/objects/Cuarto2/Cama/cama.obj");//Cama
 	Model Escritorio("resources/objects/Cuarto2/Escritorio/escritorio.obj");//Escrirorio
 	Model Librero2("resources/objects/Cuarto2/Librero/Librero.obj");//Librero2
+	Model Ropero("resources/objects/Cuarto2/Ropero/Ropero.obj");//Ropero
 	// Modelos dinamicos
 	//------------------
 	
@@ -1057,7 +1058,13 @@ int main()
 		model = glm::scale(model, glm::vec3(0.15f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		Librero2.Draw(staticShader);
+		//Librero2.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Ropero
+		model = glm::scale(model, glm::vec3(0.18f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Ropero.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en Triciclo
 		// -------------------------------------------------------------------------------------------------------------------------
