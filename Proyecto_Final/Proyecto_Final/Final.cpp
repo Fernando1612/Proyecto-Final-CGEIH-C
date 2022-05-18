@@ -722,12 +722,14 @@ int main()
 	Model triciclo("resources/objects/triciclo/triciclo2F.obj");//cuerpo del triciclo
 	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");//Ruedas del triciclo
 	//MUEBLES
-	Model Librero1("resources/objects/Cuarto1/Librero/Librero.obj");
-	
+	Model Librero1("resources/objects/Cuarto1/Librero/Librero.obj");//Librero1
+	//Model Mesa("resources/objects/Cuarto1/Mesa/Mesa.obj");//Mesa (No corrio)
+	 
+
 	// Modelos dinamicos
 	//------------------
 	
-	// Dog
+	// Perro
 	ModelAnim dog("resources/objects/Dog/doggo.dae");
 	dog.initShaders(animShader.ID);
 
