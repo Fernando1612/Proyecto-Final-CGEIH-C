@@ -730,6 +730,7 @@ int main()
 
 	Model Cajonera("resources/objects/Cuarto2/Cajonera/cajonera.obj");//Cajonera
 	Model Cama("resources/objects/Cuarto2/Cama/cama.obj");//Cama
+	Model Escritorio("resources/objects/Cuarto2/Escritorio/escritorio.obj");//Escrirorio
 	// Modelos dinamicos
 	//------------------
 	
@@ -1001,6 +1002,7 @@ int main()
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Muebles para los cuartos
 		// -------------------------------------------------------------------------------------------------------------------------
+		/*PRIMER CUARTO*/
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Librero1
 		model = glm::scale(model, glm::vec3(0.15f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -1031,6 +1033,7 @@ int main()
 		staticShader.setMat4("model", model);
 		//TeleVision.Draw(staticShader);
 
+		/*SEGUNDO CUARTO*/
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Cajonera
 		model = glm::scale(model, glm::vec3(0.15f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -1041,7 +1044,13 @@ int main()
 		model = glm::scale(model, glm::vec3(0.013f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		Cama.Draw(staticShader);
+		//Cama.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Escritorio
+		model = glm::scale(model, glm::vec3(0.15f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Escritorio.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en Triciclo
