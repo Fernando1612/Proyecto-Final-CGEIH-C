@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\danis\Documents\GitHub\Proyecto-Final-CGEIH-C\Proyecto_Final\Proyecto_Final\extras;include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,6 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\danis\Documents\GitHub\Proyecto-Final-CGEIH-C\Proyecto_Final\Proyecto_Final\extras;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,6 +150,8 @@
     <ClCompile Include="glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\11_BasicPhongShader.fs" />
+    <None Include="Shaders\11_BasicPhongShader.vs" />
     <None Include="Shaders\anim.fs" />
     <None Include="Shaders\anim.vs" />
     <None Include="Shaders\shader_Lights.fs" />

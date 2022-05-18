@@ -41,5 +41,11 @@
     <None Include="Shaders\skybox.vs">
       <Filter>Archivos de recursos</Filter>
     </None>
+    <None Include="Shaders\11_BasicPhongShader.fs">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="Shaders\11_BasicPhongShader.vs">
+      <Filter>Archivos de recursos</Filter>
+    </None>
   </ItemGroup>
 </Project>

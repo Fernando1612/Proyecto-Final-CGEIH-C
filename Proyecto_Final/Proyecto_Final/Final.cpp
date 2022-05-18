@@ -19,6 +19,7 @@
 #include <glm/gtc/matrix_transform.hpp>	//camera y model
 #include <glm/gtc/type_ptr.hpp>
 #include <time.h>
+#include <shader_m.h>
 
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -133,6 +134,8 @@ float	incX = 0.0f,
 		giroMonitoInc = 0.0f;
 
 float giroPedales = 0.0f;
+
+
 
 #define MAX_FRAMES 9
 int i_max_steps = 60;
@@ -808,6 +811,7 @@ int main()
 	Shader staticShader("Shaders/shader_Lights.vs", "Shaders/shader_Lights.fs");
 	Shader skyboxShader("Shaders/skybox.vs", "Shaders/skybox.fs");
 	Shader animShader("Shaders/anim.vs", "Shaders/anim.fs");
+	Shader phongShader("Shaders/11_BasicPhongShader.vs", "Shaders/11_BasicPhongShader.fs");
 
 	vector<std::string> faces
 	{
@@ -856,7 +860,15 @@ int main()
 	Model triciclo("resources/objects/triciclo/triciclo2F.obj");
 	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");
 
+	Model edificiosin("resources/objects/edificiosinventanas/edificiosin.obj");
+	Model ventanitas("resources/objects/ventanas/Ventanas.obj");
+
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
+	Model cubo("resources/objects/Cubo/Cube01.obj");
+
+
+
+	
 
 	
 	// Modelos dinamicos
@@ -1052,13 +1064,19 @@ int main()
 		staticShader.setMat4("model", model);
 		arbusto.Draw(staticShader);
 		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, -75.0f));//edificio 1 de villa
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
-		edificiosVilla.Draw(staticShader);
+		edificiosin.Draw(staticShader);
 
+
+		
+		
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(140.0f, 0.0f, 155.0f));//edificio 2 de villa
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
@@ -1297,15 +1315,28 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
 		staticShader.setMat4("model", model);
 		cabeza.Draw(staticShader);
+
+
+		//Transparente
+		
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, -75.0f));//edificio 1 de villa
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		ventanitas.Draw(staticShader);
+		
+
+
+
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Caja Transparente --- Siguiente Práctica
 		// -------------------------------------------------------------------------------------------------------------------------
 		/*glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
+		model = glm::scale(model, glm::vec3(15.0f));
 		staticShader.setMat4("model", model);
-		cubo.Draw(staticShader);
+		ventanitas.Draw(staticShader);
 		glEnable(GL_BLEND);*/
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
