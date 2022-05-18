@@ -309,6 +309,7 @@ void animate(void)
 			movAuto_z -= 3.0f;
 			girollantas += 3.0f;
 			if (movAuto_z <= -800) {
+				estadoAuto = 10.0f;
 				animacion = FALSE;
 			}
 		}
