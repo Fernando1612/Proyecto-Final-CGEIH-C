@@ -723,8 +723,9 @@ int main()
 	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");//Ruedas del triciclo
 	//MUEBLES
 	Model Librero1("resources/objects/Cuarto1/Librero/Librero.obj");//Librero1
-	//Model Mesa("resources/objects/Cuarto1/Mesa/Mesa.obj");//Mesa del comedor (No corrio)
+	//Model Mesa("resources/objects/Cuarto1/Mesa/Mesa.obj");//Mesa del comedor (No carga)
 	Model MesaC("resources/objects/Cuarto1/MesaC/MesaC.obj");//mesa de centro
+	Model Sillon("resources/objects/Cuarto1/sillon/Sillon.obj");//sillon
 
 	// Modelos dinamicos
 	//------------------
@@ -1013,7 +1014,13 @@ int main()
 		model = glm::scale(model, glm::vec3(0.15f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		MesaC.Draw(staticShader);
+		//MesaC.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, -10.0f, 160.0f));//Sillon
+		model = glm::scale(model, glm::vec3(0.015f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Sillon.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en Triciclo
