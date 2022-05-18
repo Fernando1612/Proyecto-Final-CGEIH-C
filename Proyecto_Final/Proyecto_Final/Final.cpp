@@ -1003,13 +1003,13 @@ int main()
 		staticShader.setMat4("model", model);
 		//Librero1.Draw(staticShader);
 
-		/*model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Mesa
+		/*model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Mesa del comedor
 		model = glm::scale(model, glm::vec3(0.15f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		Mesa.Draw(staticShader);*/
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Librero1
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Mesa de centro
 		model = glm::scale(model, glm::vec3(0.15f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
