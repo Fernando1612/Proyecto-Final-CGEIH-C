@@ -1064,7 +1064,7 @@ int main()
 		model = glm::scale(model, glm::vec3(0.18f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		Ropero.Draw(staticShader);
+		//Ropero.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en Triciclo
 		// -------------------------------------------------------------------------------------------------------------------------
