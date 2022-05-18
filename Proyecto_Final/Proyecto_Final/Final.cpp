@@ -68,9 +68,6 @@ glm::vec3 lightPosition(0.0f, 4.0f, -10.0f);
 glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 
 // posiciones
-//float x = 0.0f;
-//float y = 0.0f;
-//para el movimiento del automovil
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
 
@@ -116,118 +113,14 @@ float movTrici_z = -500.0f,	// posición inicial en Z
 	  movTrici_x = -175.0f,	// posición inicial en x
 	  orientaTrici = 0.0f;	// orinetación inical
 
-//Keyframes (Manipulación y dibujo)
-float	posX = 0.0f,
-		posY = 0.0f,
-		posZ = 0.0f,
-		rotRodIzq = 0.0f,
-		giroMonito = 0.0f;
-float	incX = 0.0f,
-		incY = 0.0f,
-		incZ = 0.0f,
-		rotInc = 0.0f,
-		giroMonitoInc = 0.0f;
-
 float giroPedales = 0.0f;
-
-#define MAX_FRAMES 9
-int i_max_steps = 60;
-int i_curr_steps = 0;
-typedef struct _frame
-{
-	//Variables para GUARDAR Key Frames
-	float posX;		//Variable para PosicionX
-	float posY;		//Variable para PosicionY
-	float posZ;		//Variable para PosicionZ
-	float rotRodIzq;
-	float giroMonito;
-
-}FRAME;
-
-FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 0;			//introducir datos
-bool play = false;
-int playIndex = 0;
-
-void saveFrame(void)
-{
-	//printf("frameindex %d\n", FrameIndex);
-	std::cout << "Frame Index = " << FrameIndex << std::endl;
-
-	KeyFrame[FrameIndex].posX = posX;
-	KeyFrame[FrameIndex].posY = posY;
-	KeyFrame[FrameIndex].posZ = posZ;
-
-	KeyFrame[FrameIndex].rotRodIzq = rotRodIzq;
-	KeyFrame[FrameIndex].giroMonito = giroMonito;
-
-	FrameIndex++;
-}
-
-void resetElements(void)
-{
-	posX = KeyFrame[0].posX;
-	posY = KeyFrame[0].posY;
-	posZ = KeyFrame[0].posZ;
-
-	rotRodIzq = KeyFrame[0].rotRodIzq;
-	giroMonito = KeyFrame[0].giroMonito;
-}
-
-void interpolation(void)
-{
-	incX = (KeyFrame[playIndex + 1].posX - KeyFrame[playIndex].posX) / i_max_steps;
-	incY = (KeyFrame[playIndex + 1].posY - KeyFrame[playIndex].posY) / i_max_steps;
-	incZ = (KeyFrame[playIndex + 1].posZ - KeyFrame[playIndex].posZ) / i_max_steps;
-
-	rotInc = (KeyFrame[playIndex + 1].rotRodIzq - KeyFrame[playIndex].rotRodIzq) / i_max_steps;
-	giroMonitoInc = (KeyFrame[playIndex + 1].giroMonito - KeyFrame[playIndex].giroMonito) / i_max_steps;
-
-}
 
 
 void animate(void)
 {
-	giroPedales += 5.5f;
-	//movBici_z += 0.1f;
-
-
-	if (play)
-	{
-		if (i_curr_steps >= i_max_steps) //end of animation between frames?
-		{
-			playIndex++;
-			if (playIndex > FrameIndex - 2)	//end of total animation?
-			{
-				std::cout << "Animation ended" << std::endl;
-				//printf("termina anim\n");
-				playIndex = 0;
-				play = false;
-			}
-			else //Next frame interpolations
-			{
-				i_curr_steps = 0; //Reset counter
-								  //Interpolation
-				interpolation();
-			}
-		}
-		else
-		{
-			//Draw animation
-			posX += incX;
-			posY += incY;
-			posZ += incZ;
-
-			rotRodIzq += rotInc;
-			giroMonito += giroMonitoInc;
-
-			i_curr_steps++;
-		}
-	}
-
-
-	//Vehículo (se estaciona)
-	if (animacion)
+	giroPedales += 5.5f;//PARA QUE GIREN LOS PEDALES
+	
+	if (animacion)//ANIMACÓN DEL CARRO
 	{
 		if (estadoAuto == 1) {
 			movAuto_z -= 3.0f;
@@ -235,7 +128,6 @@ void animate(void)
 			if (movAuto_z <= -260) {
 				orienta = 90.0f;
 				estadoAuto = 2.0f;
-				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 2) {
@@ -244,7 +136,6 @@ void animate(void)
 			if (movAuto_x >= 360) {
 				orienta = 0.0f;
 				estadoAuto = 3.0f;
-				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 3) {
@@ -253,7 +144,6 @@ void animate(void)
 			if (movAuto_z >= -30) {
 				orienta = 90.0f;
 				estadoAuto = 4.0f;
-				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 4) {
@@ -262,7 +152,6 @@ void animate(void)
 			if (movAuto_x >= 580) {
 				orienta = 180.0f;
 				estadoAuto = 5.0f;
-				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 5) {
@@ -271,7 +160,6 @@ void animate(void)
 			if (movAuto_z <= -330) {
 				orienta = 270.0f;
 				estadoAuto = 6.0f;
-				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 6) {
@@ -280,7 +168,6 @@ void animate(void)
 			if (movAuto_x <= 450) {
 				orienta = 180.0f;
 				estadoAuto = 7.0f;
-				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 7) {
@@ -289,7 +176,6 @@ void animate(void)
 			if (movAuto_z <= -750) {
 				orienta = 90.0f;
 				estadoAuto = 8.0f;
-				//animacion = FALSE;
 			}
 		}
 		if (estadoAuto == 8) {
@@ -298,7 +184,6 @@ void animate(void)
 			if (movAuto_x >= 650) {
 				orienta = 180.0f;
 				estadoAuto = 9.0f;
-				//animacion = FALSE;//no debe pararse
 			}
 		}
 		if (estadoAuto == 9) {
@@ -311,13 +196,12 @@ void animate(void)
 		}
 	}
 
-	if (animacionConst) {//presionar 1 para que el ocnstructor camine
+	if (animacionConst) {//ANIMACIÓN DEL CONSTRUCTOR
 		if (estadoConst == 1) {
 			movConstX -= 0.6f;
 			if (movConstX <= -90) {
 				OrientaConst = 90.0f;
 				estadoConst = 2.0f;
-				//animacionConst = FALSE;//no debe pararse
 			}
 		}
 		if (estadoConst == 2) {
@@ -325,7 +209,6 @@ void animate(void)
 			if (movConstZ <= -85) {
 				OrientaConst = 180.0f;
 				estadoConst = 3.0f;
-				//animacionConst = FALSE;//no debe pararse
 			}
 		}
 		if (estadoConst == 3) {
@@ -333,7 +216,6 @@ void animate(void)
 			if (movConstX <= -290) {
 				OrientaConst = 90.0f;
 				estadoConst = 4.0f;
-				//animacionConst = FALSE;//no debe pararse
 			}
 		}
 		if (estadoConst == 4) {
@@ -341,7 +223,6 @@ void animate(void)
 			if (movConstZ <= -200) {
 				OrientaConst = 180.0f;
 				estadoConst = 5.0f;
-				//animacionConst = FALSE;//no debe pararse
 			}
 		}
 		if (estadoConst == 5 && estadoAuto != 2) {//solo cruza si es que el carro no esta pasando por ahi
@@ -349,7 +230,6 @@ void animate(void)
 			if (movConstX <= -370) {
 				OrientaConst = 90.0f;
 				estadoConst = 6.0f;
-				//animacionConst = FALSE;//no debe pararse
 			}
 		}
 		if (estadoConst == 6) {
@@ -357,7 +237,7 @@ void animate(void)
 			if (movConstZ <= -275) {
 				OrientaConst = 180.0f;
 				estadoConst = 7.0f;
-				//animacionConst = FALSE;//no debe pararse
+
 			}
 		}
 		if (estadoConst == 7) {
@@ -365,87 +245,87 @@ void animate(void)
 			if (movConstX <= -440) {
 				OrientaConst = -90.0f;
 				estadoConst = 8.0f;
-				//animacionConst = FALSE;//no debe pararse
 			}
 		}
 		if (estadoConst == 8) {
 			movConstZ += 0.6f;
 			if (movConstZ >= -260) {
 				animacionConst = FALSE;
+				estadoConst = 9.0f;//Para que ya no se mueva
 			}
 		}
 	}
 
-	switch (estadoShan){//deportista: va a hacer Suicidios
+	switch (estadoShan){//ANIMACIÓN DEL DEPORTISTA
 	case 1://lega a 20
 		if (IdaRegresoShan == 1)
 		{
-			movShan += 0.5f;//con esto el deportista sale hacia adelante
+			movShan += 0.5f;
 			if (movShan >= 20) {
-				IdaRegresoShan = 0;//cambio de estado
-				orienShan = 180.0f;//giro para el regreso
+				IdaRegresoShan = 0;
+				orienShan = 180.0f;
 			}
 		}
 		else {
-			movShan -= 0.5f;//con esto el deportista sale hacia atras
+			movShan -= 0.5f;
 			if (movShan <= 0) {
-				orienShan = 0.0f;//giro hacia enfrente
-				IdaRegresoShan = 1;//cambio de estado
-				estadoShan = 2;//cambio de estado del case
+				orienShan = 0.0f;
+				IdaRegresoShan = 1;
+				estadoShan = 2;
 			}
 		}
 		break;
 	case 2://llega a 80
 		if (IdaRegresoShan == 1 && estadoShan == 2)
 		{
-			movShan += 0.5f;//con esto el deportista sale hacia adelante
+			movShan += 0.5f;
 			if (movShan >= 80) {
-				IdaRegresoShan = 0;//cambio de estado
-				orienShan = 180.0f;//giro para el regreso
+				IdaRegresoShan = 0;
+				orienShan = 180.0f;
 			}
 		}
 		else {
-			movShan -= 0.5f;//con esto el deportista sale hacia atras
+			movShan -= 0.5f;
 			if (movShan <= 0) {
-				orienShan = 0.0f;//giro hacia enfrente
-				IdaRegresoShan = 1;//cambio de estado
-				estadoShan = 3;//cambio de estado del case
+				orienShan = 0.0f;
+				IdaRegresoShan = 1;
+				estadoShan = 3;
 			}
 		}
 		break;
 	case 3://llega a 120
 		if (IdaRegresoShan == 1)
 		{
-			movShan += 0.5f;//con esto el deportista sale hacia adelante
+			movShan += 0.5f;
 			if (movShan >= 120) {
-				IdaRegresoShan = 0;//cambio de estado
-				orienShan = 180.0f;//giro para el regreso
+				IdaRegresoShan = 0;
+				orienShan = 180.0f;
 			}
 		}
 		else {
-			movShan -= 0.5f;//con esto el deportista sale hacia atras
+			movShan -= 0.5f;
 			if (movShan <= 0) {
-				orienShan = 0.0f;//giro hacia enfrente
-				IdaRegresoShan = 1;//cambio de estado
-				estadoShan = 4;//cambio de estado del case
+				orienShan = 0.0f;
+				IdaRegresoShan = 1;
+				estadoShan = 4;
 			}
 		}
 		break;
 	case 4://llega a 160
 		if (IdaRegresoShan == 1)
 		{
-			movShan += 0.5f;//con esto el deportista sale hacia adelante
+			movShan += 0.5f;
 			if (movShan >= 160) {
-				IdaRegresoShan = 0;//cambio de estado
-				orienShan = 180.0f;//giro para el regreso
+				IdaRegresoShan = 0;
+				orienShan = 180.0f;
 			}
 		}
 		else {
-			movShan -= 0.5f;//con esto el deportista sale hacia atras
+			movShan -= 0.5f;
 			if (movShan <= 0) {
-				orienShan = 0.0f;//giro hacia enfrente
-				IdaRegresoShan = 1;//cambio de estado
-				estadoShan = 1;//cambio de estado del case (regreso)
+				orienShan = 0.0f;
+				IdaRegresoShan = 1;
+				estadoShan = 1;
 			}
 		}
 		break;
@@ -454,7 +334,7 @@ void animate(void)
 
 	}
 	
-	switch (estado_trici)//para el movimiento del tamalero
+	switch (estado_trici)//ANIMACIÓN DEL TAMALERO
 	{
 	case 0:
 		if (movTrici_z <= -250.0f){
@@ -602,7 +482,7 @@ void animate(void)
 		break;
 	}
 
-	switch (estado_bici)//para el movimiento de la bici
+	switch (estado_bici)//ANIMACIÓN DE LA BICI
 	{
 	case 0:
 		if (movBici_z <= 255.0f) {
@@ -665,7 +545,7 @@ void animate(void)
 		break;
 	}
 
-	switch (estado_dogPerson) {//para la persona y el perro
+	switch (estado_dogPerson) {//ANIMACIÓN DEL PERRO
 		case 0:
 			if (movPersonZ <= 170.0f) {
 				rotDogPerson = 0.0f;
@@ -822,36 +702,26 @@ int main()
 	skyboxShader.use();
 	skyboxShader.setInt("skybox", 0);
 
-	// load models
-	// -----------
-	
-	Model botaDer("resources/objects/Personaje/bota.obj");//	ver si borro esto
-	Model piernaDer("resources/objects/Personaje/piernader.obj");
-	Model piernaIzq("resources/objects/Personaje/piernader.obj");
-	Model torso("resources/objects/Personaje/torso.obj");
-	Model brazoDer("resources/objects/Personaje/brazoder.obj");
-	Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
-	Model cabeza("resources/objects/Personaje/cabeza.obj");
-
-	//Model carro("resources/objects/lambo/carroceria.obj");//	Borrarlo
-	//Model llanta("resources/objects/lambo/Wheel.obj");//		Borrarlo
-	Model casaVieja("resources/objects/casa/OldHouse.obj");//	borrarlo
-	Model edificio("resources/objects/edificio/edificio.obj");//borrarlo
+	// Carga de Modelos
+	// ----------------
+	//EDIFICIOS
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
-	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
+	Model entrada("resources/objects/Entrada/Entrada.obj");//Entrada a la unidad
+	Model plano("resources/objects/Plano/planoVilla.obj");//Plano de la unidad
+	Model edificiosVilla("resources/objects/EdificioVilla/EdificioVilla.obj");//Edificios de la unidad
+	Model iglesia("resources/objects/Iglesia/iglesia.obj");//Iglesia
+	Model arbusto("resources/objects/arbusto/arbusto.obj");//Arbusto
+	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");//Cancha
+	//OBJETOS A ANIMAR
 	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
-	Model llanta("resources/objects/Bocho/Rueda.obj");//ruedas 
-	Model plano("resources/objects/Plano/planoVilla.obj");//plano de la unidad
-	Model edificiosVilla("resources/objects/EdificioVilla/EdificioVilla.obj");//edificios de la unidad
-	Model iglesia("resources/objects/Iglesia/iglesia.obj");//iglesia
-	Model arbusto("resources/objects/arbusto/arbusto.obj");//arbusto
-	Model pedales("resources/objects/bicicleta/pedales.obj");
-	Model cuadro("resources/objects/bicicleta/cuadro.obj");
-	Model rueda("resources/objects/bicicleta/rueda.obj");
-	Model pedalesTriciclo("resources/objects/triciclo/pedalesTriciclo.obj");
-	Model triciclo("resources/objects/triciclo/triciclo2F.obj");
-	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");
-	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
+	Model llanta("resources/objects/Bocho/Rueda.obj");//Ruedas del bocho
+	Model pedales("resources/objects/bicicleta/pedales.obj");//Pedales de la bicileta
+	Model cuadro("resources/objects/bicicleta/cuadro.obj");//Cuadro de la bicilceta
+	Model rueda("resources/objects/bicicleta/rueda.obj");//Reuedas de la bicileta
+	Model pedalesTriciclo("resources/objects/triciclo/pedalesTriciclo.obj");//Pedales del tiriclo
+	Model triciclo("resources/objects/triciclo/triciclo2F.obj");//cuerpo del triciclo
+	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");//Ruedas del triciclo
+	//MUEBLES
 	Model Librero1("resources/objects/Cuarto1/Librero/Librero.obj");
 	
 	// Modelos dinamicos
@@ -860,7 +730,6 @@ int main()
 	// Dog
 	ModelAnim dog("resources/objects/Dog/doggo.dae");
 	dog.initShaders(animShader.ID);
-
 
 	// Persona Paseando
 	ModelAnim womanWalk("resources/objects/PersonaCaminando/woman.dae");
@@ -882,16 +751,6 @@ int main()
 	ModelAnim shannon("resources/objects/Deportista/Running.dae");
 	shannon.initShaders(animShader.ID);
 	
-
-	//Inicialización de KeyFrames
-	for (int i = 0; i < MAX_FRAMES; i++)
-	{
-		KeyFrame[i].posX = 0;
-		KeyFrame[i].posY = 0;
-		KeyFrame[i].posZ = 0;
-		KeyFrame[i].rotRodIzq = 0;
-		KeyFrame[i].giroMonito = 0;
-	}
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -1114,12 +973,6 @@ int main()
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
-		
-
-		/*model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f)); //Lo borraria
-		model = glm::scale(model, glm::vec3(5.0f));
-		staticShader.setMat4("model", model);
-		//edificio.Draw(staticShader);*/
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(125.0f, 0.0f, -110.0f));//Oxxo
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -1244,70 +1097,9 @@ int main()
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Izq trase   
 
+		
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje (LO BORRARÍA)
-		// -------------------------------------------------------------------------------------------------------------------------
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		tmp = model = glm::rotate(model, glm::radians(giroMonito), glm::vec3(0.0f, 1.0f, 0.0));
-		staticShader.setMat4("model", model);
-		torso.Draw(staticShader);
-
-		//Pierna Der
-		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		piernaDer.Draw(staticShader);
-
-		//Pie Der
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		staticShader.setMat4("model", model);
-		botaDer.Draw(staticShader);
-
-		//Pierna Izq
-		model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		piernaIzq.Draw(staticShader);
-
-		//Pie Iz
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		staticShader.setMat4("model", model);
-		botaDer.Draw(staticShader);	//Izq trase
-
-		//Brazo derecho
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		brazoDer.Draw(staticShader);
-
-		//Brazo izquierdo
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		brazoIzq.Draw(staticShader);
-
-		//Cabeza
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
-		staticShader.setMat4("model", model);
-		cabeza.Draw(staticShader);
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Caja Transparente --- Siguiente Práctica
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
-		staticShader.setMat4("model", model);
-		cubo.Draw(staticShader);
-		glEnable(GL_BLEND);*/
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Termina Escenario
+		// Termina colocación de modelos
 		// -------------------------------------------------------------------------------------------------------------------------
 
 		//-------------------------------------------------------------------------------------
@@ -1350,28 +1142,7 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
-	//To Configure Model
-	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
-		posZ++;
-	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
-		posZ--;
-	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
-		posX--;
-	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
-		posX++;
-	if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
-		rotRodIzq--;
-	if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
-		rotRodIzq++;
-	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
-		giroMonito--;
-	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS)
-		giroMonito++;
-	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
-		lightPosition.x++;
-	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
-		lightPosition.x--;
-
+	
 	//Musica
 	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
 		music();
@@ -1385,35 +1156,6 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
 		animacionConst ^= true;
 
-	//To play KeyFrame animation 
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
-	{
-		if (play == false && (FrameIndex > 1))
-		{
-			std::cout << "Play animation" << std::endl;
-			resetElements();
-			//First Interpolation				
-			interpolation();
-
-			play = true;
-			playIndex = 0;
-			i_curr_steps = 0;
-		}
-		else
-		{
-			play = false;
-			std::cout << "Not enough Key Frames" << std::endl;
-		}
-	}
-
-	//To Save a KeyFrame
-	if (key == GLFW_KEY_L && action == GLFW_PRESS)
-	{
-		if (FrameIndex < MAX_FRAMES)
-		{
-			saveFrame();
-		}
-	}
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
