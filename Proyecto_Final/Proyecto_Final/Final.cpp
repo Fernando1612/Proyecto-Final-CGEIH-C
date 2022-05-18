@@ -1,14 +1,10 @@
 /*---------------------------------------------------------*/
 /* ----------------  Proyecto Final             -----------*/
 /*-----------------    2022-2   ---------------------------*/
-/*------------- Alumno: Maceda Patricio Fernando  ---------*/
 /*------------- No. Cuenta: 316054416       ---------------*/
-/*------------- Alumno:  Reyes Avila David  ---------------*/
-/*------------- No. Cuenta:   316184979     ---------------*/
-/*------------- Alumno: Salinas Romero Daniel -------------*/
+/*------------- No. Cuenta: 316184979       ---------------*/
 /*------------- No. Cuenta: 419049300       ---------------*/
-/*------------- Alumno: Vaquero Barajas Alexis-------------*/
-/*------------- No. Cuenta:  316073934      ---------------*/
+/*------------- No. Cuenta: 316073934       ---------------*/
 
 #include <Windows.h>
 
@@ -829,7 +825,7 @@ int main()
 	// load models
 	// -----------
 	
-	Model botaDer("resources/objects/Personaje/bota.obj");
+	Model botaDer("resources/objects/Personaje/bota.obj");//	ver si borro esto
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
 	Model torso("resources/objects/Personaje/torso.obj");
@@ -837,10 +833,10 @@ int main()
 	Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
 	Model cabeza("resources/objects/Personaje/cabeza.obj");
 
-	//Model carro("resources/objects/lambo/carroceria.obj");//en caso de ocuparlo tambien
-	//Model llanta("resources/objects/lambo/Wheel.obj");//llantas del lambo
-	Model casaVieja("resources/objects/casa/OldHouse.obj");
-	Model edificio("resources/objects/edificio/edificio.obj");
+	//Model carro("resources/objects/lambo/carroceria.obj");//	Borrarlo
+	//Model llanta("resources/objects/lambo/Wheel.obj");//		Borrarlo
+	Model casaVieja("resources/objects/casa/OldHouse.obj");//	borrarlo
+	Model edificio("resources/objects/edificio/edificio.obj");//borrarlo
 	Model oxxo("resources/objects/oxxo/oxxo.obj");
 	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
 	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
@@ -855,9 +851,8 @@ int main()
 	Model pedalesTriciclo("resources/objects/triciclo/pedalesTriciclo.obj");
 	Model triciclo("resources/objects/triciclo/triciclo2F.obj");
 	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");
-
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
-
+	Model Librero1("resources/objects/Cuarto1/Librero/Librero.obj");
 	
 	// Modelos dinamicos
 	//------------------
@@ -875,15 +870,16 @@ int main()
 	ModelAnim manWalk("resources/objects/PersonaCaminando2/man.dae");
 	manWalk.initShaders(animShader.ID);
 	
+	//Persona en Bicicleta
 	ModelAnim manBici("resources/objects/bicicleta/man.dae");
 	manBici.initShaders(animShader.ID);
 	
-
+	//Tamalero
 	ModelAnim manTricycle("resources/objects/triciclo/manTricycle.dae");
 	manTricycle.initShaders(animShader.ID);
 	
-	
-	ModelAnim shannon("resources/objects/Deportista/Running.dae");//cargando a SHANNON (deportista)
+	//persona corriendo
+	ModelAnim shannon("resources/objects/Deportista/Running.dae");
 	shannon.initShaders(animShader.ID);
 	
 
@@ -994,37 +990,37 @@ int main()
 		manBici.Draw(animShader);
 
 		
-		// DOG
+		//-------------------Perro--------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(290.0f + movDogX, 0.0f, 0.0f + movDogZ)); 
 		model = glm::scale(model, glm::vec3(0.3f));	
 		model = glm::rotate(model, glm::radians(rotDogPerson), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		dog.Draw(animShader);
 
-		// Persona Paseando
+		//-------------------Paseando--------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(285.0 + movPersonX, 0.0f, 0.0f + movPersonZ));
 		model = glm::scale(model, glm::vec3(0.09f));
 		model = glm::rotate(model, glm::radians(rotDogPerson), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		womanWalk.Draw(animShader);
 
-		// Persona Caminando
+		//-------------------Caminando--------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(580.0f + movConstX, 0.0f, 120.0f + movConstZ));
 		model = glm::scale(model, glm::vec3(0.09f));
 		model = glm::rotate(model, glm::radians(OrientaConst), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		manWalk.Draw(animShader);
 
-		//Deportista
+		//-------------------Corriendo--------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 70.0f + movShan));
 		model = glm::rotate(model, glm::radians(orienShan), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.09f));//escala
+		model = glm::scale(model, glm::vec3(0.09f));
 		animShader.setMat4("model", model);
 		shannon.Draw(animShader);
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Escenario
+		// Escenario 
 		// -------------------------------------------------------------------------------------------------------------------------
 		staticShader.use();
 		staticShader.setMat4("projection", projection);
@@ -1120,31 +1116,37 @@ int main()
 		edificiosVilla.Draw(staticShader);
 		
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f));
+		/*model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f)); //Lo borraria
 		model = glm::scale(model, glm::vec3(5.0f));
 		staticShader.setMat4("model", model);
-		//edificio.Draw(staticShader);
+		//edificio.Draw(staticShader);*/
 
-		// OXXO
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(125.0f, 0.0f, -110.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(125.0f, 0.0f, -110.0f));//Oxxo
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.5f));
 		staticShader.setMat4("model", model);
 		oxxo.Draw(staticShader);
 
-		// ENTRADA
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(550.0f, 0.0f, 100.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(550.0f, 0.0f, 100.0f));//Entrada
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
 		staticShader.setMat4("model", model);
 		entrada.Draw(staticShader);
 
-		// CANCHA
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Cancha
 		model = glm::scale(model, glm::vec3(9.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		courtBasket.Draw(staticShader);
+
+		// -------------------------------------------------------------------------------------------------------------------------
+		// Muebles para los cuartos
+		// -------------------------------------------------------------------------------------------------------------------------
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Librero1
+		model = glm::scale(model, glm::vec3(0.15f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Librero1.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en Triciclo
@@ -1179,8 +1181,6 @@ int main()
 		staticShader.setMat4("model", model);
 		ruedaTriciclo.Draw(staticShader); // rueda delantera izq
 		
-		
-
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en bici
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -1208,7 +1208,6 @@ int main()
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader); // Atras
 		
-
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -1246,7 +1245,7 @@ int main()
 		llanta.Draw(staticShader);	//Izq trase   
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje
+		// Personaje (LO BORRARÍA)
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
