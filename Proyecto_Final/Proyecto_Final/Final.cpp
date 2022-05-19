@@ -1338,9 +1338,9 @@ int main()
 		glEnable(GL_BLEND);
 		
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-28.0f, 1.2f, 9.0f));//estante
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-33.0f, 0.0f, 11.0f));//estante
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.4f));
+		model = glm::scale(model, glm::vec3(1.2f));
 		staticShader.setMat4("model", model);
 		estantecito.Draw(staticShader);
 

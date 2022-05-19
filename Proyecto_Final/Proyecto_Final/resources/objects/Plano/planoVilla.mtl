@@ -1,5 +1,5 @@
 # Blender MTL File: 'planoVilla.blend'
-# Material Count: 20
+# Material Count: 19
 
 newmtl Material.001
 Ns 250.000000
@@ -66,17 +66,6 @@ Ni 1.450000
 d 1.000000
 illum 2
 map_Kd TexturesCom_Grass0130_1_seamless_S.jpg
-
-newmtl Material.007
-Ns 250.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd concrete_seamless_texture_7122.jpg
 
 newmtl Material.008
 Ns 250.000000
