@@ -863,8 +863,11 @@ int main()
 	Model edificiosin("resources/objects/edificiosinventanas/edificiosin.obj");
 	Model ventanitas("resources/objects/ventanas/Ventanas.obj");
 
+	Model persiana("resources/objects/Persiana/persiana.obj");
+	Model estantecito("resources/objects/Estante/estante.obj");
+
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
-	Model cubo("resources/objects/Cubo/Cube01.obj");
+
 
 
 
@@ -1072,6 +1075,17 @@ int main()
 		staticShader.setMat4("model", model);
 		edificiosin.Draw(staticShader);
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-41.0f, 1.2f, 1.0f));//persiana
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.4f, 3.4f, 2.4f));
+		staticShader.setMat4("model", model);
+		persiana.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-28.0f, 1.2f, 9.0f));//estante
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.4f));
+		staticShader.setMat4("model", model);
+		estantecito.Draw(staticShader);
 
 		
 		
