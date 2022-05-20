@@ -959,7 +959,7 @@ int main()
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(398.0f, 0.0f, -518.0f));//Pared 
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 0.5f, 0.3f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.6f, 0.3f));
 		staticShader.setMat4("model", model);
 		Pared.Draw(staticShader);
 
@@ -1025,11 +1025,11 @@ int main()
 		// Muebles para los cuartos
 		// -------------------------------------------------------------------------------------------------------------------------
 		/*PRIMER CUARTO*/
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Librero1
-		model = glm::scale(model, glm::vec3(0.15f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(402.0f, 0.0f, -532.0f));//Librero1
+		model = glm::scale(model, glm::vec3(0.16f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//Librero1.Draw(staticShader);
+		Librero1.Draw(staticShader);
 
 		/*model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Mesa del comedor
 		model = glm::scale(model, glm::vec3(0.15f));
@@ -1037,23 +1037,23 @@ int main()
 		staticShader.setMat4("model", model);
 		Mesa.Draw(staticShader);*/
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Mesa de centro
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(430.0f, 0.0f, -513.0f));//Mesa de centro
 		model = glm::scale(model, glm::vec3(0.15f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//MesaC.Draw(staticShader);
+		MesaC.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, -10.0f, 160.0f));//Sillon
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(373.0f, -12.0f, -625.0f));//Sillon
 		model = glm::scale(model, glm::vec3(0.013f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//Sillon.Draw(staticShader);
+		Sillon.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Television
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.0f, -513.0f));//Television
 		model = glm::scale(model, glm::vec3(0.15f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//TeleVision.Draw(staticShader);
+		TeleVision.Draw(staticShader);
 
 		/*SEGUNDO CUARTO*/
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Cajonera
