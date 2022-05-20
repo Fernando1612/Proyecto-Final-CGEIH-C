@@ -77,10 +77,11 @@ luza_3 = 0.5f,
 luza_4 = 0.4f,
 luza_5 = 0.7f,
 luza_6 = 0.4f;
-bool	cuarto1 = false;
+bool	cuarto1 = false;//foco del cuarto 1
 
-// posiciones
-//float x = 0.0f;
+// para abrir y cerrar la puerta del cuarto 1
+bool puerta1 = false;
+float puertaInc = -90.0f;
 //float y = 0.0f;
 //para el movimiento del automovil
 float	movAuto_x = 0.0f,
@@ -204,7 +205,12 @@ void animate(void)
 {
 	giroPedales += 5.5f;
 	//movBici_z += 0.1f;
-
+	if (puerta1 && puertaInc >= -180.0f) {
+		puertaInc -= 0.6;
+	}
+	if (!puerta1 && puertaInc <= -90.0f) {
+		puertaInc += 0.6;
+	}
 	if (cuarto1) {
 		luza_1 = 0.0f;
 		luza_2 = 0.0f;
@@ -892,7 +898,8 @@ int main()
 	Model cama("resources/objects/Cama/cama.obj");
 	Model sinfoco("resources/objects/foco/sinfoco.obj");
 	Model foco("resources/objects/foco/foco.obj");
-	Model puertab("resources/objects/puertab/puertablanca.obj");
+	Model puertab("resources/objects/puertab/puertab.obj");
+	Model sinpuerta("resources/objects/puertab/sinpuerta.obj");
 	Model paredb("resources/objects/paredb/paredb.obj");
 
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
@@ -1335,10 +1342,16 @@ int main()
 		armario.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 10.0f, -21.0f));//puerta del cuarto1
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(puertaInc), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.7f, 2.8f, 3.0f));
 		staticShader.setMat4("model", model);
 		puertab.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 10.0f, -21.0f));//base de la puerta
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.7f, 2.8f, 3.0f));
+		staticShader.setMat4("model", model);
+		sinpuerta.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.6f, 0.0f, -22.85f));//puerta del cuarto1
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -1452,9 +1465,13 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
 		animacionConst ^= true;
 
-	//manejo de la luz del cuarto 1
+	//manejo de la luz del foco del cuarto 1
 	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
 		cuarto1 ^= true;
+
+	//manejo de la puerta dek cuarto 1
+	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
+		puerta1 ^= true;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
