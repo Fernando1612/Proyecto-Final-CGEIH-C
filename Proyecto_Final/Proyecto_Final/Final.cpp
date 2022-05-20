@@ -949,7 +949,7 @@ int main()
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(398.0f, 0.0f, -510.0f));//edificio 6 de villa (ES EL QUE RELLENARE
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(398.0f, 0.0f, -510.0f));//edificio 6 de villa (ES EL QUE RELLENARÉ)
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
