@@ -71,6 +71,13 @@ double	deltaTime = 0.0f,
 //Lighting
 glm::vec3 lightPosition(0.0f, 4.0f, -10.0f);
 glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
+float luza_1 = 0.9f,
+luza_2 = 0.7f,
+luza_3 = 0.5f,
+luza_4 = 0.4f,
+luza_5 = 0.7f,
+luza_6 = 0.4f;
+bool	cuarto1 = false;
 
 // posiciones
 //float x = 0.0f;
@@ -198,6 +205,22 @@ void animate(void)
 	giroPedales += 5.5f;
 	//movBici_z += 0.1f;
 
+	if (cuarto1) {
+		luza_1 = 0.0f;
+		luza_2 = 0.0f;
+		luza_3 = 0.0f;
+		luza_4 = 0.0f;
+		luza_5 = 0.0f;
+		luza_6 = 0.0f;
+	}
+	else {
+		luza_1 = 0.9f;
+		luza_2 = 0.7f;
+		luza_3 = 0.5f;
+		luza_4 = 0.4f;
+		luza_5 = 0.7f;
+		luza_6 = 0.4f;
+	}
 
 	if (play)
 	{
@@ -867,6 +890,8 @@ int main()
 	Model estantecito("resources/objects/Estante/estante.obj");
 	Model armario("resources/objects/armario/armario.obj");
 	Model cama("resources/objects/Cama/cama.obj");
+	Model sinfoco("resources/objects/foco/sinfoco.obj");
+	Model foco("resources/objects/foco/foco.obj");
 
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
@@ -942,7 +967,7 @@ int main()
 		//Setup Advanced Lights
 		staticShader.setVec3("viewPos", camera.Position);
 		staticShader.setVec3("dirLight.direction", lightDirection);
-		staticShader.setVec3("dirLight.ambient", glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setVec3("dirLight.ambient", glm::vec3(0.3f, 0.3f, 0.3f));
 		staticShader.setVec3("dirLight.diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
 		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.0f));
 
@@ -954,13 +979,13 @@ int main()
 		staticShader.setFloat("pointLight[0].linear", 0.009f);
 		staticShader.setFloat("pointLight[0].quadratic", 0.032f);
 
-		staticShader.setVec3("pointLight[1].position", glm::vec3(-80.0, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[1].ambient", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[1].diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[1].specular", glm::vec3(0.0f, 0.0f, 0.0f));
+		staticShader.setVec3("pointLight[1].position", glm::vec3(-25.0f, 22.0f, 0.0f));
+		staticShader.setVec3("pointLight[1].ambient", glm::vec3(luza_1, luza_1, luza_2));
+		staticShader.setVec3("pointLight[1].diffuse", glm::vec3(luza_3, luza_3, luza_4));
+		staticShader.setVec3("pointLight[1].specular", glm::vec3(luza_5, luza_5, luza_6));
 		staticShader.setFloat("pointLight[1].constant", 1.0f);
-		staticShader.setFloat("pointLight[1].linear", 0.009f);
-		staticShader.setFloat("pointLight[1].quadratic", 0.032f);
+		staticShader.setFloat("pointLight[1].linear", 0.001f);
+		staticShader.setFloat("pointLight[1].quadratic", 0.002f);
 
 		staticShader.setFloat("material_shininess", 32.0f);
 
@@ -1358,6 +1383,21 @@ int main()
 		staticShader.setMat4("model", model);
 		armario.Draw(staticShader);
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, 0.0f));//base del foco
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		sinfoco.Draw(staticShader);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, 0.0f));//foco
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		foco.Draw(staticShader);
+		glEnable(GL_BLEND);
+
 
 
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -1448,6 +1488,10 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	//Constructor animation
 	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
 		animacionConst ^= true;
+
+	//manejo de la luz del cuarto 1
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
+		cuarto1 ^= true;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
