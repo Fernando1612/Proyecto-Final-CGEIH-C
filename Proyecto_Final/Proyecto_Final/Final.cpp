@@ -1056,7 +1056,7 @@ int main()
 		TeleVision.Draw(staticShader);
 
 		/*SEGUNDO CUARTO*/
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(313.0f, 0.0f, -530.0f));//Cajonera
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(314.0f, 0.0f, -530.0f));//Cajonera
 		model = glm::scale(model, glm::vec3(0.23f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
@@ -1074,17 +1074,17 @@ int main()
 		staticShader.setMat4("model", model);
 		Escritorio.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Librero2
-		model = glm::scale(model, glm::vec3(0.15f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(393.0f, 0.0f, -512.0f));//Librero2
+		model = glm::scale(model, glm::vec3(0.16f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//Librero2.Draw(staticShader);
+		Librero2.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Ropero
-		model = glm::scale(model, glm::vec3(0.18f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(314.0f, 0.0f, -500.0f));//Ropero
+		model = glm::scale(model, glm::vec3(0.23f, 0.27f, 0.23f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//Ropero.Draw(staticShader);
+		Ropero.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en Triciclo
 		// -------------------------------------------------------------------------------------------------------------------------
