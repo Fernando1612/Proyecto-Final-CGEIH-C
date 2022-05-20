@@ -866,6 +866,7 @@ int main()
 	Model persiana("resources/objects/Persiana/persiana.obj");
 	Model estantecito("resources/objects/Estante/estante.obj");
 	Model armario("resources/objects/armario/armario.obj");
+	Model cama("resources/objects/Cama/cama.obj");
 
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
@@ -1081,6 +1082,12 @@ int main()
 		model = glm::scale(model, glm::vec3(3.4f, 3.4f, 2.4f));
 		staticShader.setMat4("model", model);
 		persiana.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-33.0f, 0.0f, -14.0f));//cama
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cama.Draw(staticShader);
 
 		
 
