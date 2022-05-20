@@ -712,8 +712,10 @@ int main()
 	Model iglesia("resources/objects/Iglesia/iglesia.obj");//Iglesia
 	Model arbusto("resources/objects/arbusto/arbusto.obj");//Arbusto
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");//Cancha
-	Model EdificioPlus("resources/objects/edificiosinventanas/edificiosin.obj");
-	Model Ventana("resources/objects/ventanas/Ventanas.obj");
+	Model EdificioPlus("resources/objects/edificiosinventanas/edificiosin.obj");//Edificio a rellenar
+	Model Pared("resources/objects/edificiosinventanas/Pared.obj");//pared para separar los 2 cuartos
+	Model Ventana("resources/objects/ventanas/Ventanas.obj");//Sus ventanas
+
 	//OBJETOS A ANIMAR
 	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
 	Model llanta("resources/objects/Bocho/Rueda.obj");//Ruedas del bocho
@@ -954,6 +956,12 @@ int main()
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		EdificioPlus.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(398.0f, 0.0f, -518.0f));//Pared 
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.5f, 0.3f));
+		staticShader.setMat4("model", model);
+		Pared.Draw(staticShader);
 
 		//Para que las ventanas sean transparentes
 		glEnable(GL_BLEND);
