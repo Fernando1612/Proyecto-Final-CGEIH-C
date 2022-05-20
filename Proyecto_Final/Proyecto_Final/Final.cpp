@@ -1056,23 +1056,23 @@ int main()
 		TeleVision.Draw(staticShader);
 
 		/*SEGUNDO CUARTO*/
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Cajonera
-		model = glm::scale(model, glm::vec3(0.15f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(313.0f, 0.0f, -530.0f));//Cajonera
+		model = glm::scale(model, glm::vec3(0.23f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//Cajonera.Draw(staticShader);
+		Cajonera.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 1.0f, 160.0f));//Cama
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(340.0f, 1.0f, -650.0f));//Cama
 		model = glm::scale(model, glm::vec3(0.013f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//Cama.Draw(staticShader);
+		Cama.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Escritorio
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(390.0f, 0.0f, -530.0f));//Escritorio
 		model = glm::scale(model, glm::vec3(0.15f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//Escritorio.Draw(staticShader);
+		Escritorio.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Librero2
 		model = glm::scale(model, glm::vec3(0.15f));
