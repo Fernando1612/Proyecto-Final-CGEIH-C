@@ -865,6 +865,7 @@ int main()
 
 	Model persiana("resources/objects/Persiana/persiana.obj");
 	Model estantecito("resources/objects/Estante/estante.obj");
+	Model armario("resources/objects/armario/armario.obj");
 
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
@@ -1343,6 +1344,12 @@ int main()
 		model = glm::scale(model, glm::vec3(1.2f));
 		staticShader.setMat4("model", model);
 		estantecito.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 8.0f));//armario
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.6f, 3.0f));
+		staticShader.setMat4("model", model);
+		armario.Draw(staticShader);
 
 
 
