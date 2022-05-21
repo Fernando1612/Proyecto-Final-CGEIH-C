@@ -727,7 +727,7 @@ int main()
 	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");//Ruedas del triciclo
 	//MUEBLES
 	Model Librero1("resources/objects/Cuarto1/Librero/Librero.obj");//Librero1
-	//Model Mesa("resources/objects/Cuarto1/Mesa/Mesa.obj");//Mesa del comedor (No carga)
+	Model Mesa("resources/objects/Cuarto1/Mesa/Mesa.obj");//Mesa del comedor (No carga)
 	Model MesaC("resources/objects/Cuarto1/MesaC/MesaC.obj");//mesa de centro
 	Model Sillon("resources/objects/Cuarto1/sillon/Sillon.obj");//Sillon
 	Model TeleVision("resources/objects/Cuarto1/Television/Television.obj");//Television
