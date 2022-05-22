@@ -63,9 +63,24 @@ const int LOOP_TIME = 1000 / FPS; // = 16 milisec // 1000 millisec == 1 sec
 double	deltaTime = 0.0f,
 		lastFrame = 0.0f;
 
-//Lighting
+//Lighting (para la luz, los focos y su animacion)
 glm::vec3 lightPosition(0.0f, 4.0f, -10.0f);
 glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
+	//Cuartos
+bool OnFoco1 =FALSE,
+	OnFoco2 =FALSE;
+float Luz11 = 0.0f,// Cuarto2
+	Luz12 = 0.0f,
+	Luz13 = 0.0f,
+	Luz14 = 0.0f,
+	Luz15 = 0.0f,
+	Luz16 = 0.0f;
+float Luz21 = 0.0f,// Cuarto2
+	Luz22 = 0.0f,
+	Luz23 = 0.0f,
+	Luz24 = 0.0f,
+	Luz25 = 0.0f,
+	Luz26 = 0.0f;
 
 // posiciones
 float	movAuto_x = 0.0f,
@@ -120,6 +135,40 @@ void animate(void)
 {
 	giroPedales += 5.5f;//PARA QUE GIREN LOS PEDALES
 	
+	//PARA LOS FOCOS
+	if (OnFoco1) {//cuarto1
+		Luz11 = 0.0f;
+		Luz12 = 0.0f;
+		Luz13 = 0.0f;
+		Luz14 = 0.0f;
+		Luz15 = 0.0f;
+		Luz16 = 0.0f;
+	}
+	else {
+		Luz11 = 0.8f;
+		Luz12 = 0.7f;
+		Luz13 = 0.5f;
+		Luz14 = 0.4f;
+		Luz15 = 0.7f;
+		Luz16 = 0.4f;
+	}
+	if (OnFoco2) {//cuarto 2
+		Luz21 = 0.0f;
+		Luz22 = 0.0f;
+		Luz23 = 0.0f;
+		Luz24 = 0.0f;
+		Luz25 = 0.0f;
+		Luz26 = 0.0f;
+	}
+	else {
+		Luz21 = 0.8f;
+		Luz22 = 0.7f;
+		Luz23 = 0.5f;
+		Luz24 = 0.4f;
+		Luz25 = 0.7f;
+		Luz26 = 0.4f;
+	}
+
 	if (animacion)//ANIMACÓN DEL CARRO
 	{
 		if (estadoAuto == 1) {
@@ -798,19 +847,19 @@ int main()
 		staticShader.setVec3("dirLight.ambient", glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setVec3("dirLight.diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
 		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.0f));
-
-		staticShader.setVec3("pointLight[0].position", lightPosition);
-		staticShader.setVec3("pointLight[0].ambient", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[0].diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[0].specular", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setFloat("pointLight[0].constant", 0.08f);
+		//Foco cuarto1
+		staticShader.setVec3("pointLight[0].position", glm::vec3(440.0f, 25.0f, -513.0f));//misma posicion que el foco 1
+		staticShader.setVec3("pointLight[0].ambient", glm::vec3(Luz11, Luz11, Luz12));
+		staticShader.setVec3("pointLight[0].diffuse", glm::vec3(Luz13, Luz13, Luz14));
+		staticShader.setVec3("pointLight[0].specular", glm::vec3(Luz15, Luz15, Luz16));
+		staticShader.setFloat("pointLight[0].constant", 1.0f);
 		staticShader.setFloat("pointLight[0].linear", 0.009f);
 		staticShader.setFloat("pointLight[0].quadratic", 0.032f);
-
-		staticShader.setVec3("pointLight[1].position", glm::vec3(-80.0, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[1].ambient", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[1].diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[1].specular", glm::vec3(0.0f, 0.0f, 0.0f));
+		//Foco cuarto2
+		staticShader.setVec3("pointLight[1].position", glm::vec3(350.0f, 25.0f, -513.0f));//misma posicion que el foco 2
+		staticShader.setVec3("pointLight[1].ambient", glm::vec3(Luz21, Luz21, Luz22));
+		staticShader.setVec3("pointLight[1].diffuse", glm::vec3(Luz23, Luz23, Luz24));
+		staticShader.setVec3("pointLight[1].specular", glm::vec3(Luz25, Luz25, Luz26));
 		staticShader.setFloat("pointLight[1].constant", 1.0f);
 		staticShader.setFloat("pointLight[1].linear", 0.009f);
 		staticShader.setFloat("pointLight[1].quadratic", 0.032f);
@@ -1087,7 +1136,7 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		Ropero.Draw(staticShader);
-
+		//ILUMINACION
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(440.0f, 26.0f, -513.0f));//Foco1
 		model = glm::scale(model, glm::vec3(0.1f));
 		staticShader.setMat4("model", model);
@@ -1249,9 +1298,15 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		animacion ^= true;
 
 	//Constructor animation
-	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
+	if (key == GLFW_KEY_C && action == GLFW_PRESS)
 		animacionConst ^= true;
 
+	//Luz cuarto 1 animation
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
+		OnFoco1 ^= true;
+	//Luz cuarto 2 animation
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
+		OnFoco2 ^= true;
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
