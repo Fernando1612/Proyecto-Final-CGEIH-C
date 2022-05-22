@@ -727,7 +727,7 @@ int main()
 	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");//Ruedas del triciclo
 	//MUEBLES
 	Model Librero1("resources/objects/Cuarto1/Librero/Librero.obj");//Librero1
-	Model Mesa("resources/objects/Cuarto1/Mesa/Mesa.obj");//Mesa del comedor (No carga)
+	//Model Comedor("resources/objects/Cuarto1/Mesa/Mesa.obj");//Mesa del comedor (No carga)
 	Model MesaC("resources/objects/Cuarto1/MesaC/MesaC.obj");//mesa de centro
 	Model Sillon("resources/objects/Cuarto1/sillon/Sillon.obj");//Sillon
 	Model TeleVision("resources/objects/Cuarto1/Television/Television.obj");//Television
@@ -737,6 +737,8 @@ int main()
 	Model Escritorio("resources/objects/Cuarto2/Escritorio/escritorio.obj");//Escrirorio
 	Model Librero2("resources/objects/Cuarto2/Librero/Librero.obj");//Librero2
 	Model Ropero("resources/objects/Cuarto2/Ropero/Ropero.obj");//Ropero
+
+	Model Foco("resources/objects/Focos/Foco.obj");//Foco para la iluminacion
 	// Modelos dinamicos
 	//------------------
 	
@@ -1031,11 +1033,11 @@ int main()
 		staticShader.setMat4("model", model);
 		Librero1.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Mesa del comedor
+		/*model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, 150.0f));//Mesa del comedor
 		model = glm::scale(model, glm::vec3(1.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		Mesa.Draw(staticShader);
+		Mesa.Draw(staticShader);*/
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(430.0f, 0.0f, -513.0f));//Mesa de centro
 		model = glm::scale(model, glm::vec3(0.15f));
@@ -1085,6 +1087,16 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		Ropero.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(440.0f, 26.0f, -513.0f));//Foco1
+		model = glm::scale(model, glm::vec3(0.1f));
+		staticShader.setMat4("model", model);
+		Foco.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(350.0f, 26.0f, -513.0f));//Foco2
+		model = glm::scale(model, glm::vec3(0.1f));
+		staticShader.setMat4("model", model);
+		Foco.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en Triciclo
 		// -------------------------------------------------------------------------------------------------------------------------
