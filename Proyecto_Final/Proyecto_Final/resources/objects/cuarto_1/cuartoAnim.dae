@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author></author>
+      <authoring_tool>FBX COLLADA exporter</authoring_tool>
+      <comments></comments>
+    </contributor>
+    <created>2022-05-21T18:38:50Z</created>
+    <keywords></keywords>
+    <modified>2022-05-21T18:38:50Z</modified>
+    <revision></revision>
+    <subject></subject>
+    <title></title>
+    <unit meter="0.001000" name="centimeter"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="MapFBXASC032FBXASC03513-image" name="MapFBXASC032FBXASC03513">
+      <init_from>negro.jpg</init_from>
+    </image>
+    <image id="MapFBXASC032FBXASC03536-image" name="MapFBXASC032FBXASC03536">
+      <init_from>gokuu.gif</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="MaterialFBXASC032FBXASC03527" name="MaterialFBXASC032FBXASC03527">
+      <instance_effect url="#MaterialFBXASC032FBXASC03527-fx"/>
+    </material>
+    <material id="MaterialFBXASC032FBXASC03568" name="MaterialFBXASC032FBXASC03568">
+      <instance_effect url="#MaterialFBXASC032FBXASC03568-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="MaterialFBXASC032FBXASC03527-fx" name="MaterialFBXASC032FBXASC03527">
+      <profile_COMMON>
+        <technique sid="standard">
+          <phong>
+            <emission>
+              <color sid="emission">0.000000  0.000000 0.000000 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0.500000  0.500000 0.500000 1.000000</color>
+            </ambient>
+            <diffuse>
+              <texture texture="MapFBXASC032FBXASC03513-image" texcoord="CHANNEL0">
+                <extra>
+                  <technique profile="MAYA">
+                    <wrapU sid="wrapU0">TRUE</wrapU>
+                    <wrapV sid="wrapV0">TRUE</wrapV>
+                    <blend_mode>ADD</blend_mode>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color sid="specular">2.000000  2.000000 2.000000 1.000000</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">1024.000000</float>
+            </shininess>
+            <transparency>
+              <float sid="transparency">0.000000</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="MaterialFBXASC032FBXASC03568-fx" name="MaterialFBXASC032FBXASC03568">
+      <profile_COMMON>
+        <technique sid="standard">
+          <phong>
+            <emission>
+              <color sid="emission">0.000000  0.000000 0.000000 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0.500000  0.500000 0.500000 1.000000</color>
+            </ambient>
+            <diffuse>
+              <texture texture="MapFBXASC032FBXASC03536-image" texcoord="CHANNEL0">
+                <extra>
+                  <technique profile="MAYA">
+                    <wrapU sid="wrapU0">TRUE</wrapU>
+                    <wrapV sid="wrapV0">TRUE</wrapV>
+                    <blend_mode>ADD</blend_mode>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color sid="specular">2.000000  2.000000 2.000000 1.000000</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">1024.000000</float>
+            </shininess>
+            <transparency>
+              <float sid="transparency">0.000000</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Box013-lib" name="Box013Mesh">
+      <mesh>
+        <source id="Box013-POSITION">
+          <float_array id="Box013-POSITION-array" count="24">
+-3165.921875 -233.726044 0.000000
+3165.921875 -233.726044 0.000000
+-3165.921875 233.726044 0.000000
+3165.921875 233.726044 0.000000
+-3165.921875 -233.726044 467.451538
+3165.921875 -233.726044 467.451538
+-3165.921875 233.726044 467.451538
+3165.921875 233.726044 467.451538
+</float_array>
+          <technique_common>
+            <accessor source="#Box013-POSITION-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Box013-Normal0">
+          <float_array id="Box013-Normal0-array" count="108">
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#Box013-Normal0-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Box013-UV0">
+          <float_array id="Box013-UV0-array" count="48">
+1.000000 0.000000
+0.000000 0.000000
+1.000000 1.000000
+0.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#Box013-UV0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Box013-VERTEX">
+          <input semantic="POSITION" source="#Box013-POSITION"/>
+        </vertices>
+        <triangles count="12" material="MaterialFBXASC032FBXASC03527">
+          <input semantic="VERTEX" offset="0" source="#Box013-VERTEX"/>
+          <input semantic="NORMAL" offset="1" source="#Box013-Normal0"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#Box013-UV0"/>
+          <p> 2 0 2 3 1 3 0 2 0 1 3 1 0 4 0 3 5 3 7 6 7 6 7 6 4 8 4 7 9 7 4 10 4 5 11 5 5 12 11 4 13 10 0 14 8 5 15 11 0 16 8 1 17 9 7 18 15 5 19 14 1 20 12 7 21 15 1 22 12 3 23 13 6 24 19 7 25 18 3 26 16 6 27 19 3 28 16 2 29 17 4 30 23 6 31 22 2 32 20 4 33 23 2 34 20 0 35 21</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Box014-lib" name="Box014Mesh">
+      <mesh>
+        <source id="Box014-POSITION">
+          <float_array id="Box014-POSITION-array" count="24">
+-263.352814 -273.291077 0.000000
+263.352814 -273.291077 0.000000
+-263.352814 273.291077 0.000000
+263.352814 273.291077 0.000000
+-263.352814 -273.291077 218.632507
+263.352814 -273.291077 218.632507
+-263.352814 273.291077 218.632507
+263.352814 273.291077 218.632507
+</float_array>
+          <technique_common>
+            <accessor source="#Box014-POSITION-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Box014-Normal0">
+          <float_array id="Box014-Normal0-array" count="108">
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#Box014-Normal0-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Box014-UV0">
+          <float_array id="Box014-UV0-array" count="48">
+1.000000 0.000000
+0.000000 0.000000
+1.000000 1.000000
+0.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+0.000000 0.000000
+1.000000 0.000000
+0.000000 1.000000
+1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#Box014-UV0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Box014-VERTEX">
+          <input semantic="POSITION" source="#Box014-POSITION"/>
+        </vertices>
+        <triangles count="12" material="MaterialFBXASC032FBXASC03527">
+          <input semantic="VERTEX" offset="0" source="#Box014-VERTEX"/>
+          <input semantic="NORMAL" offset="1" source="#Box014-Normal0"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#Box014-UV0"/>
+          <p> 1 0 1 0 1 0 3 2 3 0 3 0 2 4 2 3 5 3 7 6 7 6 7 6 4 8 4 7 9 7 4 10 4 5 11 5 5 12 11 4 13 10 0 14 8 5 15 11 0 16 8 1 17 9 7 18 15 5 19 14 1 20 12 7 21 15 1 22 12 3 23 13 6 24 19 7 25 18 3 26 16 6 27 19 3 28 16 2 29 17 4 30 23 6 31 22 2 32 20 4 33 23 2 34 20 0 35 21</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Box015-lib" name="Box015Mesh">
+      <mesh>
+        <source id="Box015-POSITION">
+          <float_array id="Box015-POSITION-array" count="24">
+-3165.921875 -233.726044 0.000000
+3165.921875 -233.726044 0.000000
+-3165.921875 233.726044 0.000000
+3165.921875 233.726044 0.000000
+-3165.921875 -233.726044 467.451538
+3165.921875 -233.726044 467.451538
+-3165.921875 233.726044 467.451538
+3165.921875 233.726044 467.451538
+</float_array>
+          <technique_common>
+            <accessor source="#Box015-POSITION-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Box015-Normal0">
+          <float_array id="Box015-Normal0-array" count="108">
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#Box015-Normal0-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Box015-UV0">
+          <float_array id="Box015-UV0-array" count="48">
+0.000000 1.118897
+1.000000 1.118897
+0.000000 2.118897
+1.000000 2.118897
+-0.008179 1.118897
+0.991821 1.118897
+-0.008179 2.118896
+0.991821 2.118896
+0.000000 1.118897
+1.000000 1.118897
+0.000000 2.118896
+1.000000 2.118896
+0.138376 0.246633
+0.208178 0.246633
+0.138376 0.399750
+0.208178 0.399750
+0.000000 1.118897
+1.000000 1.118897
+0.000000 2.118897
+1.000000 2.118897
+0.000000 1.122986
+1.000000 1.122986
+0.000000 2.122986
+1.000000 2.122986
+</float_array>
+          <technique_common>
+            <accessor source="#Box015-UV0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Box015-VERTEX">
+          <input semantic="POSITION" source="#Box015-POSITION"/>
+        </vertices>
+        <triangles count="12" material="MaterialFBXASC032FBXASC03568">
+          <input semantic="VERTEX" offset="0" source="#Box015-VERTEX"/>
+          <input semantic="NORMAL" offset="1" source="#Box015-Normal0"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#Box015-UV0"/>
+          <p> 2 0 23 3 1 22 0 2 21 1 3 20 0 4 21 3 5 22 7 6 19 6 7 18 4 8 16 7 9 19 4 10 16 5 11 17 5 12 15 4 13 14 0 14 12 5 15 15 0 16 12 1 17 13 7 18 3 5 19 2 1 20 0 7 21 3 1 22 0 3 23 1 6 24 11 7 25 10 3 26 8 6 27 11 3 28 8 2 29 9 4 30 7 6 31 6 2 32 4 4 33 7 2 34 4 0 35 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="cuartoAnim" name="cuartoAnim">
+      <node name="Box013" id="Box013" sid="Box013">
+        <matrix sid="matrix">0.000002 0.000605 0.000000 293.407684 -0.004936 0.000000 0.000000 -2.575212 0.000000 0.000000 0.036737 16.445318 0.000000 0.000000 0.000000 1.000000</matrix>
+        <instance_geometry url="#Box013-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="MaterialFBXASC032FBXASC03527" target="#MaterialFBXASC032FBXASC03527"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="FCOLLADA">
+            <visibility>1.000000</visibility>
+          </technique>
+        </extra>
+      </node>
+      <node name="Box014" id="Box014" sid="Box014">
+        <matrix sid="matrix">0.000002 0.003018 0.000000 294.285767 -0.006528 0.000001 0.000000 -1.939064 0.000000 0.000000 0.006528 25.524475 0.000000 0.000000 0.000000 1.000000</matrix>
+        <instance_geometry url="#Box014-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="MaterialFBXASC032FBXASC03527" target="#MaterialFBXASC032FBXASC03527"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="FCOLLADA">
+            <visibility>1.000000</visibility>
+          </technique>
+        </extra>
+      </node>
+      <node name="Box015" id="Box015" sid="Box015">
+        <matrix sid="matrix">0.000002 0.000572 0.000000 293.269989 -0.004665 0.000000 0.000000 -2.575266 0.000000 0.000000 0.034722 16.935223 0.000000 0.000000 0.000000 1.000000</matrix>
+        <instance_geometry url="#Box015-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="MaterialFBXASC032FBXASC03568" target="#MaterialFBXASC032FBXASC03568"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="FCOLLADA">
+            <visibility>1.000000</visibility>
+          </technique>
+        </extra>
+      </node>
+      <extra>
+        <technique profile="MAX3D">
+          <frame_rate>30.000000</frame_rate>
+        </technique>
+        <technique profile="FCOLLADA">
+          <start_time>0.000000</start_time>
+          <end_time>5.000000</end_time>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#cuartoAnim"/>
+  </scene>
+</COLLADA>
