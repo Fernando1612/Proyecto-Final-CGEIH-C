@@ -899,6 +899,7 @@ int main()
 	Model sinpuerta("resources/objects/puertab/sinpuerta.obj");
 	Model paredb("resources/objects/paredb/paredb.obj");
 	Model sillon("resources/objects/sillon/sillon.obj");
+	Model mesita("resources/objects/mesita/mesita.obj");
 
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
@@ -986,7 +987,7 @@ int main()
 		staticShader.setFloat("pointLight[0].linear", 0.009f);
 		staticShader.setFloat("pointLight[0].quadratic", 0.032f);
 
-		staticShader.setVec3("pointLight[1].position", glm::vec3(-25.0f, 22.0f, 0.0f));
+		staticShader.setVec3("pointLight[1].position", glm::vec3(-25.0f, 23.0f, 0.0f));
 		staticShader.setVec3("pointLight[1].ambient", glm::vec3(luza_1, luza_1, luza_2));
 		staticShader.setVec3("pointLight[1].diffuse", glm::vec3(luza_3, luza_3, luza_4));
 		staticShader.setVec3("pointLight[1].specular", glm::vec3(luza_5, luza_5, luza_6));
@@ -994,13 +995,21 @@ int main()
 		staticShader.setFloat("pointLight[1].linear", 0.001f);
 		staticShader.setFloat("pointLight[1].quadratic", 0.002f);
 
-		staticShader.setVec3("pointLight[2].position", glm::vec3(-25.0f, 22.0f, -40.0f));
+		staticShader.setVec3("pointLight[2].position", glm::vec3(-25.0f, 23.0f, -40.0f));
 		staticShader.setVec3("pointLight[2].ambient", glm::vec3(luza_1, luza_1, luza_2));
 		staticShader.setVec3("pointLight[2].diffuse", glm::vec3(luza_3, luza_3, luza_4));
 		staticShader.setVec3("pointLight[2].specular", glm::vec3(luza_5, luza_5, luza_6));
 		staticShader.setFloat("pointLight[2].constant", 1.0f);
 		staticShader.setFloat("pointLight[2].linear", 0.001f);
 		staticShader.setFloat("pointLight[2].quadratic", 0.01f);
+
+		staticShader.setVec3("pointLight[3].position", glm::vec3(-25.0f, 23.0f, -66.0f));
+		staticShader.setVec3("pointLight[3].ambient", glm::vec3(luza_1, luza_1, luza_2));
+		staticShader.setVec3("pointLight[3].diffuse", glm::vec3(luza_3, luza_3, luza_4));
+		staticShader.setVec3("pointLight[3].specular", glm::vec3(luza_5, luza_5, luza_6));
+		staticShader.setFloat("pointLight[3].constant", 1.0f);
+		staticShader.setFloat("pointLight[3].linear", 0.001f);
+		staticShader.setFloat("pointLight[3].quadratic", 0.008f);
 
 		staticShader.setFloat("material_shininess", 32.0f);
 
@@ -1377,6 +1386,12 @@ int main()
 		staticShader.setMat4("model", model);
 		sillon.Draw(staticShader);
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-29.6f, 0.0f, -64.0f));//mesita de sala
+		//model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f));
+		staticShader.setMat4("model", model);
+		mesita.Draw(staticShader);
+
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, 0.0f));//base del foco
 		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
@@ -1401,6 +1416,19 @@ int main()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, -40.0f));//foco del cuarto 2
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		foco.Draw(staticShader);
+		glEnable(GL_BLEND);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, -66.0f));//base del foco 2 del cuarto 2
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		sinfoco.Draw(staticShader);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, -66.0f));//foco 2 del cuarto 2
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		foco.Draw(staticShader);
