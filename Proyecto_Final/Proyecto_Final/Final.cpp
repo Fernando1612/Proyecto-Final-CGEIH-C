@@ -1,14 +1,10 @@
 /*---------------------------------------------------------*/
-/* ----------------  Proyecto Final             -----------*/
+/* ----------------  Proyecto Final  de Teoría           -----------*/
 /*-----------------    2022-2   ---------------------------*/
-/*------------- Alumno: Maceda Patricio Fernando  ---------*/
-/*------------- No. Cuenta: 316054416       ---------------*/
-/*------------- Alumno:  Reyes Avila David  ---------------*/
-/*------------- No. Cuenta:   316184979     ---------------*/
+
 /*------------- Alumno: Salinas Romero Daniel -------------*/
 /*------------- No. Cuenta: 419049300       ---------------*/
-/*------------- Alumno: Vaquero Barajas Alexis-------------*/
-/*------------- No. Cuenta:  316073934      ---------------*/
+
 
 #include <Windows.h>
 
@@ -891,6 +887,7 @@ int main()
 
 	Model edificiosin("resources/objects/edificiosinventanas/edificiosin.obj");
 	Model ventanitas("resources/objects/ventanas/Ventanas.obj");
+	Model comedor("resources/objects/comedor/comedor.obj");
 
 	Model persiana("resources/objects/Persiana/persiana.obj");
 	Model estantecito("resources/objects/Estante/estante.obj");
@@ -1358,6 +1355,12 @@ int main()
 		model = glm::scale(model, glm::vec3(4.7f, 4.6f, 4.6f));
 		staticShader.setMat4("model", model);
 		paredb.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.6f, 0.0f, -30.0f));//comedor
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f));
+		staticShader.setMat4("model", model);
+		comedor.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, 0.0f));//base del foco
 		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
