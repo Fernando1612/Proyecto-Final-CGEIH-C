@@ -898,6 +898,7 @@ int main()
 	Model puertab("resources/objects/puertab/puertab.obj");
 	Model sinpuerta("resources/objects/puertab/sinpuerta.obj");
 	Model paredb("resources/objects/paredb/paredb.obj");
+	Model sillon("resources/objects/sillon/sillon.obj");
 
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
@@ -1358,17 +1359,23 @@ int main()
 		staticShader.setMat4("model", model);
 		sinpuerta.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.6f, 0.0f, -22.85f));//puerta del cuarto1
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-26.6f, 0.0f, -22.85f));//puerta del cuarto1
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(4.7f, 4.6f, 4.6f));
+		model = glm::scale(model, glm::vec3(4.8f, 4.6f, 4.9f));
 		staticShader.setMat4("model", model);
 		paredb.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.6f, 0.0f, -35.0f));//comedor
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-24.6f, 0.0f, -34.0f));//comedor
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.3f));
 		staticShader.setMat4("model", model);
 		comedor.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-29.6f, 0.0f, -52.0f));//sillon
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.5f));
+		staticShader.setMat4("model", model);
+		sillon.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, 0.0f));//base del foco
 		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
