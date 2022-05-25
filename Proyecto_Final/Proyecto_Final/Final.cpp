@@ -52,7 +52,7 @@ GLFWmonitor *monitors;
 void getResolution(void);
 
 // camera
-Camera camera(glm::vec3(0.0f, 50.0f, 200.0f));
+Camera camera(glm::vec3(50.0f, 15.0f, 50.0f));//tenia 50 en y
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
