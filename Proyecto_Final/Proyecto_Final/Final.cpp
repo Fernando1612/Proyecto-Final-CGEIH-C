@@ -77,7 +77,10 @@ bool	cuarto1 = false;//foco del cuarto 1
 
 // para abrir y cerrar la puerta del cuarto 1
 bool puerta1 = false;
+// para abrir y cerrar la puerta del departamento
+bool puerta2 = false;
 float puertaInc = -90.0f;
+float puertaInc2 = -90.0f;
 //float y = 0.0f;
 //para el movimiento del automovil
 float	movAuto_x = 0.0f,
@@ -201,13 +204,25 @@ void animate(void)
 {
 	giroPedales += 5.5f;
 	//movBici_z += 0.1f;
+
+	//control de la puerta del cuarto 1
 	if (puerta1 && puertaInc >= -180.0f) {
 		puertaInc -= 0.6;
 	}
 	if (!puerta1 && puertaInc <= -90.0f) {
 		puertaInc += 0.6;
 	}
-	if (cuarto1) {
+
+	//control de la puerta de la entrada del departamento
+	if (puerta2 && puertaInc2 >= -180.0f) {
+		puertaInc2 -= 0.6;
+	}
+	if (!puerta2 && puertaInc2 <= -90.0f) {
+		puertaInc2 += 0.6;
+	}
+
+	//control de la luz del departamento
+	if (!cuarto1) {
 		luza_1 = 0.0f;
 		luza_2 = 0.0f;
 		luza_3 = 0.0f;
@@ -1012,6 +1027,14 @@ int main()
 		staticShader.setFloat("pointLight[3].linear", 0.001f);
 		staticShader.setFloat("pointLight[3].quadratic", 0.008f);
 
+		staticShader.setVec3("pointLight[4].position", glm::vec3(13.0f, 23.0f, -77.0f));
+		staticShader.setVec3("pointLight[4].ambient", glm::vec3(0.9f, 0.9f, 0.7f));
+		staticShader.setVec3("pointLight[4].diffuse", glm::vec3(0.5f, 0.5f, 0.4f));
+		staticShader.setVec3("pointLight[4].specular", glm::vec3(0.7f, 0.7f, 0.4f));
+		staticShader.setFloat("pointLight[4].constant", 1.0f);
+		staticShader.setFloat("pointLight[4].linear", 0.001f);
+		staticShader.setFloat("pointLight[4].quadratic", 0.008f);
+
 		staticShader.setFloat("material_shininess", 32.0f);
 
 		glm::mat4 model = glm::mat4(1.0f);
@@ -1364,7 +1387,7 @@ int main()
 		puertab.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 9.2f, -74.5f));//puerta de entrada
-		model = glm::rotate(model, glm::radians(puertaInc), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(puertaInc2), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.7f, 2.8f, 3.0f));
 		staticShader.setMat4("model", model);
 		puertab.Draw(staticShader);
@@ -1393,7 +1416,7 @@ int main()
 		staticShader.setMat4("model", model);
 		sillon.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-29.6f, 0.0f, -68.0f));//tele
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-31.0f, 0.0f, -72.0f));//tele
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(3.2f));
 		staticShader.setMat4("model", model);
@@ -1442,6 +1465,19 @@ int main()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-25.0f, 23.0f, -66.0f));//foco 2 del cuarto 2
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		foco.Draw(staticShader);
+		glEnable(GL_BLEND);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(13.0f, 23.0f, -77.0f));//base del foco de la entrada del edificio
+		model = glm::scale(model, glm::vec3(8.0f));
+		staticShader.setMat4("model", model);
+		sinfoco.Draw(staticShader);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(13.0f, 23.0f, -77.0f));//foco de la entrada del edificio
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		foco.Draw(staticShader);
@@ -1544,6 +1580,10 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	//manejo de la puerta dek cuarto 1
 	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
 		puerta1 ^= true;
+
+	//manejo de la puerta del departamento
+	if (key == GLFW_KEY_4 && action == GLFW_PRESS)
+		puerta2 ^= true;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
