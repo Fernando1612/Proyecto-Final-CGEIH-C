@@ -900,6 +900,7 @@ int main()
 	Model paredb("resources/objects/paredb/paredb.obj");
 	Model sillon("resources/objects/sillon/sillon.obj");
 	Model mesita("resources/objects/mesita/mesita.obj");
+	Model tele("resources/objects/tele/tele.obj");
 
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
 
@@ -1391,6 +1392,12 @@ int main()
 		model = glm::scale(model, glm::vec3(3.5f));
 		staticShader.setMat4("model", model);
 		sillon.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-29.6f, 0.0f, -68.0f));//tele
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.2f));
+		staticShader.setMat4("model", model);
+		tele.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-29.6f, 0.0f, -64.0f));//mesita de sala
 		//model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
