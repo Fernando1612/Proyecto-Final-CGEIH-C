@@ -110,7 +110,10 @@ bool	animacion = false,//para el carro
 
 int estado_trici = 0,
 	estado_dogPerson = 0,
-	estado_bici = 0;
+	estado_bici = 0,
+	estado_silla = 0,
+	estado_refri = 0,
+	estado_ventilador = 0;
 
 float movBici_z = -5.0f, // posición inicial en z
 	  movBici_x = -500.0f,	// posición inicial en x
@@ -119,6 +122,11 @@ float movBici_z = -5.0f, // posición inicial en z
 float movTrici_z = -500.0f,	// posición inicial en Z
 	  movTrici_x = -175.0f,	// posición inicial en x
 	  orientaTrici = 0.0f;	// orinetación inical
+
+float movSilla_z = -490.0f;
+
+float rot_refri = -2.5f; 
+float rot_venti = 0.0f;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -737,6 +745,75 @@ void animate(void)
 			}
 			break;
 	}
+
+	switch (estado_silla)
+	{
+	case 0:
+		if(movSilla_z >= -500.0f){
+			movSilla_z -= 0.1f;
+		}
+		else {
+			estado_silla = 1;
+		}
+		break;
+	case 1:
+		if (movSilla_z <= -490.0f) {
+			movSilla_z += 0.1f;
+		}
+		else {
+			estado_silla = 0;
+		}
+		break;
+	default:
+		break;
+	}
+
+	switch (estado_refri)
+	{
+	case 0:
+		if (rot_refri <= 45.0f) {
+			rot_refri += 1.0f;
+		}
+		else
+		{
+			estado_refri = 1;
+		}
+		break;
+	case 1:
+		if (rot_refri >= -2.5f) {
+			rot_refri -= 1.0f;
+		}
+		else {
+			estado_refri = 0;
+		}
+		break;
+	default:
+		break;
+	}
+
+	switch (estado_ventilador)
+	{
+	case 0:
+		if (rot_venti >= -45.0f) {
+			rot_venti -= 1.0f;
+		}
+		else
+		{
+			estado_ventilador = 1;
+		}
+		break;
+	case 1:
+		if (rot_venti <= 0.0f) {
+			rot_venti += 1.0f;
+		}
+		else {
+			estado_ventilador = 0;
+		}
+		break;
+	default:
+		break;
+	}
+
 }
 
 void getResolution()
@@ -858,7 +935,10 @@ int main()
 
 	// Cuartos
 	Model cama_1("resources/objects/cuarto_1/cuarto2.obj");
-	Model buro("resources/objects/cuarto_1/buroC1.obj");
+	Model silla("resources/objects/cuarto_1/silla.obj");
+	Model refri("resources/objects/cuarto_1/refri.obj");
+	Model aspas("resources/objects/cuarto_1/aspas.obj");
+	Model cubierta("resources/objects/cuarto_1/cubierta.obj");
 
 	// Modelos dinamicos
 	//------------------
@@ -887,6 +967,7 @@ int main()
 	ModelAnim shannon("resources/objects/Deportista/Running.dae");//cargando a SHANNON (deportista)
 	shannon.initShaders(animShader.ID);
 	*/
+
 
 
 
@@ -1157,10 +1238,34 @@ int main()
 		staticShader.setMat4("model", model);
 		cama_1.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-380.0f, 0.0f, -490.0f));
-		model = glm::scale(model, glm::vec3(0.5f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.0f, movSilla_z));
+		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//buro.Draw(staticShader);
+		silla.Draw(staticShader);
+
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-379.0f, 1.0f, -247.0f));
+		model = glm::scale(tmp, glm::vec3(1.0f));
+		tmp = model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(tmp, glm::radians(rot_refri), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		refri.Draw(staticShader);
+
+
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-423.0f, 72.0f, -345.5f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::rotate(model, glm::radians(rot_venti), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		cubierta.Draw(staticShader);
+
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::rotate(model, glm::radians(rot_venti), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		aspas.Draw(staticShader);
+
+		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en Triciclo
