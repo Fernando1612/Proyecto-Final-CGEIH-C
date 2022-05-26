@@ -903,6 +903,7 @@ int main()
 	Model edificiosin("resources/objects/edificiosinventanas/edificiosin.obj");
 	Model ventanitas("resources/objects/ventanas/Ventanas.obj");
 	Model comedor("resources/objects/comedor/comedor.obj");
+	Model cortinas("resources/objects/cortinas/cortinas.obj");
 
 	Model persiana("resources/objects/Persiana/persiana.obj");
 	Model estantecito("resources/objects/Estante/estante.obj");
@@ -1506,6 +1507,12 @@ int main()
 		staticShader.setMat4("model", model);
 		foco.Draw(staticShader);
 		glEnable(GL_BLEND);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-42.5f, 0.0f, -39.0f));//cortinas
+		//model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 10.0f, 8.5f));
+		staticShader.setMat4("model", model);
+		cortinas.Draw(staticShader);
 
 
 		// -------------------------------------------------------------------------------------------------------------------------
