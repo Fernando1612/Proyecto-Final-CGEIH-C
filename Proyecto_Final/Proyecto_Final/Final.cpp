@@ -53,6 +53,9 @@ void getResolution(void);
 
 // camera
 Camera camera(glm::vec3(70.0f, 15.0f, -65.0f));//tenia 50 en y
+Camera camera3rd(glm::vec3(80.0f, 15.0f, -50.0f));
+bool cambiocamara = false;
+
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -1066,10 +1069,22 @@ int main()
 		glm::mat4 model = glm::mat4(1.0f);
 		glm::mat4 tmp = glm::mat4(1.0f);
 		// view/projection transformations
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
-		glm::mat4 view = camera.GetViewMatrix();
-		staticShader.setMat4("projection", projection);
-		staticShader.setMat4("view", view);
+		glm::mat4 projection;
+		glm::mat4 view;
+		if (cambiocamara) {
+			projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
+			view = camera3rd.GetViewMatrix();
+			staticShader.setMat4("projection", projection);
+			staticShader.setMat4("view", view);
+		}
+		else {
+			projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
+			view = camera.GetViewMatrix();
+			staticShader.setMat4("projection", projection);
+			staticShader.setMat4("view", view);
+		}
+		
+		
 
 		//// Light
 		glm::vec3 lightColor = glm::vec3(0.6f);
@@ -1622,6 +1637,10 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	//Constructor animation
 	if (key == GLFW_KEY_4 && action == GLFW_PRESS)
 		animacionConst ^= true;
+	
+	//cambio de camara
+	if (glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
+		cambiocamara ^= true;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
