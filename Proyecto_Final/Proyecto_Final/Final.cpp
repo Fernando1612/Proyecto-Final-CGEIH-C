@@ -52,7 +52,7 @@ GLFWmonitor *monitors;
 void getResolution(void);
 
 // camera
-Camera camera(glm::vec3(130.0f, 15.0f, -20.0f));//tenia 50 en y
+Camera camera(glm::vec3(70.0f, 15.0f, -65.0f));//tenia 50 en y
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -904,6 +904,7 @@ int main()
 	Model ventanitas("resources/objects/ventanas/Ventanas.obj");
 	Model comedor("resources/objects/comedor/comedor.obj");
 	Model cortinas("resources/objects/cortinas/cortinas.obj");
+	Model instrucciones("resources/objects/Instrucciones/instrucciones.obj");
 
 	Model persiana("resources/objects/Persiana/persiana.obj");
 	Model estantecito("resources/objects/Estante/estante.obj");
@@ -1417,6 +1418,12 @@ int main()
 		staticShader.setMat4("model", model);
 		puertab.Draw(staticShader);
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(38.0f, -6.0f, -48.0f));//letrero
+		//model = glm::rotate(model, glm::radians(puertaInc2), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		instrucciones.Draw(staticShader);
+
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 10.0f, -21.0f));//base de la puerta
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.7f, 2.8f, 3.0f));
@@ -1600,21 +1607,21 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
 		animacion ^= true;
 
-	//Constructor animation
-	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
-		animacionConst ^= true;
-
 	//manejo de la luz del foco del cuarto 1
-	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
+	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
 		cuarto1 ^= true;
 
 	//manejo de la puerta dek cuarto 1
-	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
 		puerta1 ^= true;
 
 	//manejo de la puerta del departamento
-	if (key == GLFW_KEY_4 && action == GLFW_PRESS)
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
 		puerta2 ^= true;
+
+	//Constructor animation
+	if (key == GLFW_KEY_4 && action == GLFW_PRESS)
+		animacionConst ^= true;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
