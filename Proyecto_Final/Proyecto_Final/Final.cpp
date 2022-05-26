@@ -8,7 +8,7 @@
 
 #include <Windows.h>
 
-#include <glad/glad.h>
+#include <glad/glad.h> //glad/glad.h
 #include <glfw3.h>	//main
 #include <stdlib.h>		
 #include <glm/glm.hpp>	//camera y model
@@ -1040,29 +1040,6 @@ int main()
 		staticShader.setFloat("pointLight[4].linear", 0.001f);
 		staticShader.setFloat("pointLight[4].quadratic", 0.008f);
 
-		staticShader.setVec3("pointLight[5].position", glm::vec3(-10.0f, 46.0f, -90.0f));
-		staticShader.setVec3("pointLight[5].ambient", glm::vec3(0.9f, 0.9f, 0.7f));
-		staticShader.setVec3("pointLight[5].diffuse", glm::vec3(0.5f, 0.5f, 0.4f));
-		staticShader.setVec3("pointLight[5].specular", glm::vec3(0.7f, 0.7f, 0.4f));
-		staticShader.setFloat("pointLight[5].constant", 1.0f);
-		staticShader.setFloat("pointLight[5].linear", 0.001f);
-		staticShader.setFloat("pointLight[5].quadratic", 0.008f);
-
-		staticShader.setVec3("pointLight[6].position", glm::vec3(-10.0f, 69.0f, -130.0f));
-		staticShader.setVec3("pointLight[6].ambient", glm::vec3(0.9f, 0.9f, 0.7f));
-		staticShader.setVec3("pointLight[6].diffuse", glm::vec3(0.5f, 0.5f, 0.4f));
-		staticShader.setVec3("pointLight[6].specular", glm::vec3(0.7f, 0.7f, 0.4f));
-		staticShader.setFloat("pointLight[6].constant", 1.0f);
-		staticShader.setFloat("pointLight[6].linear", 0.001f);
-		staticShader.setFloat("pointLight[6].quadratic", 0.008f);
-
-		staticShader.setVec3("pointLight[7].position", glm::vec3(-10.0f, 102.0f, -40.0f));
-		staticShader.setVec3("pointLight[7].ambient", glm::vec3(0.9f, 0.9f, 0.7f));
-		staticShader.setVec3("pointLight[7].diffuse", glm::vec3(0.5f, 0.5f, 0.4f));
-		staticShader.setVec3("pointLight[7].specular", glm::vec3(0.7f, 0.7f, 0.4f));
-		staticShader.setFloat("pointLight[7].constant", 1.0f);
-		staticShader.setFloat("pointLight[7].linear", 0.001f);
-		staticShader.setFloat("pointLight[7].quadratic", 0.008f);
 
 		staticShader.setFloat("material_shininess", 32.0f);
 
