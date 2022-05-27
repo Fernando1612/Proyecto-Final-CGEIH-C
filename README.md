@@ -2,19 +2,13 @@
  
 # Manual de Usuario 📖
 
-## Proyecto Final Laboratorio de Computación Gráfica E Interacción Humano-Computadora 👨🏽‍💻
+## Proyecto Final de Computación Gráfica E Interacción Humano-Computadora 👨🏽‍💻
 
-## Integrantes:
+## Alumno:
  - Maceda Patricio Fernando🤵🏽
  - Cta: 316054416
- - Reyes Avila David 🤵🏽
- - Cta: 316184979
- - Salinas Romero Daniel 🤵🏽
- - Cta: 419049300
- - Vaquero Barajas Alexis 🤵🏽
- - Cta: 316073934
   
-### Semestre 2022-2 | Grupo 2
+### Semestre 2022-2 | Grupo 4
 </div>
 
 ### Requerimentos
