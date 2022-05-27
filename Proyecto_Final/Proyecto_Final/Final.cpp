@@ -937,7 +937,7 @@ int main()
 
 	// Modelos dinamicos
 	//------------------
-	/*
+
 	// Dog
 	ModelAnim dog("resources/objects/Dog/doggo.dae");
 	dog.initShaders(animShader.ID);
@@ -961,9 +961,6 @@ int main()
 
 	ModelAnim shannon("resources/objects/Deportista/Running.dae");//cargando a SHANNON (deportista)
 	shannon.initShaders(animShader.ID);
-	*/
-
-
 
 
 	//Inicialización de KeyFrames
@@ -1056,7 +1053,6 @@ int main()
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
-		/*
 		//-------------------Triciclo---------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(movTrici_x, 1.0f, movTrici_z));
 		model = glm::scale(model, glm::vec3(0.09));
@@ -1100,7 +1096,6 @@ int main()
 		model = glm::scale(model, glm::vec3(0.09f));//escala
 		animShader.setMat4("model", model);
 		shannon.Draw(animShader);
-		*/
 
 
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -1119,7 +1114,7 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(22.0f));
 		staticShader.setMat4("model", model);
-		//iglesia.Draw(staticShader);
+		iglesia.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, 5.0f, 0.0f));//arbusto 1
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
