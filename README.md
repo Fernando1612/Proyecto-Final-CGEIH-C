@@ -101,13 +101,25 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
 <img src="img/Captura18.jpg" alt="Programa abierto, posición inicial"></img>
 <div align="justify">
 
- Modelo de la Iglesia y su ubicación
+ Modelo de la Iglesia y su ubicación ⛪.
  <div align="Center">
 <img src="img/Captura19.jpg" alt="Modelo de la iglesia y su ubicación"></img>
 <div align="justify">
- Modelo de la tienda Oxxo y su ubicación
+ Modelo de la tienda Oxxo y su ubicación 🏪.
  <div align="Center">
 <img src="img/Captura20.jpg" alt="Modelo de la tienda Oxxo y su ubicación"></img>
+<div align="justify">
+ Ubicación de los cuartos amublados en el mapa. Dirigirse a este dificio para poder observar los muebles y animacones 🏬. 
+  <div align="Center">
+<img src="img/Captura21.jpg" alt="ubicación de cuartos"></img>
+<div align="justify">
+ Cuarto de abajo amueblado 🏠.
+  <div align="Center">
+<img src="img/Captura23.jpg" alt="cuarto 1"></img>
+<div align="justify">
+ Cuarto de arriba amueblado 🏠.
+  <div align="Center">
+<img src="img/Captura22.jpg" alt="cuarto 2"></img>
 <div align="justify">
  
  
@@ -159,6 +171,24 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
      
     <div align="Center">
       <img src="img/Captura17.jpg" alt="AnimacionDeportista"></img>
+    <div align="justify">
+          
+    * La animacion de la silla no necesita una entrada del usuario 🪑.
+     
+    <div align="Center">
+      <img src="img/Captura24.jpg" alt="AnimacionSilla"></img>
+    <div align="justify">
+          
+    * La animacion del refrigerador no necesita una entrada del usuario 🧊.
+     
+    <div align="Center">
+      <img src="img/Captura25.jpg" alt="AnimacionRefri"></img>
+    <div align="justify">
+          
+    * La animacion del ventilador no necesita una entrada del usuario 💨.
+     
+    <div align="Center">
+      <img src="img/Captura26.jpg" alt="AnimacionVentilador"></img>
     <div align="justify">
     
 * Movimientos del mouse:
