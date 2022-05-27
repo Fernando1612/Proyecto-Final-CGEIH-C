@@ -311,6 +311,7 @@ void animate(void)
 			movAuto_z -= 3.0f;
 			girollantas += 3.0f;
 			if (movAuto_z <= -800) {
+				estadoAuto = 10.0f;
 				animacion = FALSE;
 			}
 		}
@@ -459,7 +460,7 @@ void animate(void)
 
 	}
 	
-	switch (estado_trici)
+	switch (estado_trici)//para el movimiento del tamalero
 	{
 	case 0:
 		if (movTrici_z <= -250.0f){
@@ -607,7 +608,7 @@ void animate(void)
 		break;
 	}
 
-	switch (estado_bici)
+	switch (estado_bici)//para el movimiento de la bici
 	{
 	case 0:
 		if (movBici_z <= 255.0f) {
@@ -670,7 +671,7 @@ void animate(void)
 		break;
 	}
 
-	switch (estado_dogPerson) {
+	switch (estado_dogPerson) {//para la persona y el perro
 		case 0:
 			if (movPersonZ <= 170.0f) {
 				rotDogPerson = 0.0f;
