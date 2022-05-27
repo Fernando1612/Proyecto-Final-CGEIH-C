@@ -1,7 +1,9 @@
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Fernando1612/Proyecto-Final-CGEIH-C/blob/316054416_ProyectoFinalTeo_GPO4/README.en.md)
+
 <div align="center">
  
 # Manual de Usuario 📖
-
+ 
 ## Proyecto Final de Computación Gráfica E Interacción Humano-Computadora 👨🏽‍💻
 
 ## Alumno:
